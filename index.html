@@ -10,18 +10,28 @@
 <script>
   (function(w, d, t, h, s, n) {
     w.FlodeskObject = n;
-    var fn = function() { (w[n].q = w[n].q || []).push(arguments); };
+    var fn = function() {
+      (w[n].q = w[n].q || []).push(arguments);
+    };
     w[n] = w[n] || fn;
     var f = d.getElementsByTagName(t)[0];
     var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
-    var sm = d.createElement(t); sm.async = true; sm.type = 'module';
-    sm.src = h + s + '.mjs' + v; f.parentNode.insertBefore(sm, f);
-    var sn = d.createElement(t); sn.async = true; sn.noModule = true;
-    sn.src = h + s + '.js' + v; f.parentNode.insertBefore(sn, f);
+    var sm = d.createElement(t);
+    sm.async = true;
+    sm.type = 'module';
+    sm.src = h + s + '.mjs' + v;
+    f.parentNode.insertBefore(sm, f);
+    var sn = d.createElement(t);
+    sn.async = true;
+    sn.noModule = true;
+    sn.src = h + s + '.js' + v;
+    f.parentNode.insertBefore(sn, f);
   })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
 </script>
 <script>
-  window.fd('form', { formId: '69a48e33bb206090e7ad1921' });
+  window.fd('form', {
+    formId: '69a4bd72ebf332bb71733844'
+  });
 </script>
 
 <style>
@@ -295,7 +305,8 @@ nav.banner-gone{top:0}
 .svc-h2 em{font-style:normal;color:var(--pu);text-shadow:0 0 24px rgba(191,95,255,.4)}
 .svc-header-right{font-size:.7rem;color:rgba(242,240,255,.68);max-width:220px;line-height:1.8;font-family:'IBM Plex Mono',monospace;align-self:flex-end;padding-bottom:8px}
 /* drag scroll */
-.svc-scroll-wrap{overflow-x:auto;overflow-y:hidden;cursor:grab;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.svc-scroll-wrap{overflow-x:auto;overflow-y:hidden;cursor:grab;-webkit-overflow-scrolling:touch;padding-bottom:4px;touch-action:pan-x;scroll-snap-type:x mandatory;}
+.svc-card{scroll-snap-align:start;}
 .svc-scroll-wrap:active{cursor:grabbing}
 .svc-scroll-wrap::-webkit-scrollbar{height:2px}
 .svc-scroll-wrap::-webkit-scrollbar-track{background:rgba(191,95,255,.05)}
@@ -972,33 +983,6 @@ footer{
 .bm-foot span{color:var(--pu);font-size:.56rem}
 
 /* ═══════════════════════════════════════
-   EMAIL POPUP
-═══════════════════════════════════════ */
-.email-popup{position:fixed;inset:0;z-index:800;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(2,1,4,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s}
-.email-popup.show{opacity:1;visibility:visible}
-.ep-card{position:relative;width:100%;max-width:500px;background:var(--ink2);border:1px solid rgba(191,95,255,.2);box-shadow:0 0 50px rgba(191,95,255,.1),0 32px 80px rgba(0,0,0,.7);overflow:hidden;transform:translateY(28px) scale(.96);transition:transform .5s cubic-bezier(.4,0,.2,1)}
-.email-popup.show .ep-card{transform:translateY(0) scale(1)}
-.ep-img{position:relative;height:420px;overflow:hidden}
-.ep-img img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:saturate(.7)}
-.ep-img-veil{position:absolute;inset:0;background:linear-gradient(to top,var(--ink2) 0%,rgba(14,14,20,.4) 60%,transparent 100%)}
-.ep-badge{position:absolute;top:13px;left:13px;background:var(--pu);color:var(--ink);font-size:.48rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;padding:4px 11px;font-family:'IBM Plex Mono',monospace}
-.ep-x{position:absolute;top:11px;right:11px;width:26px;height:26px;background:rgba(6,6,10,.6);border:1px solid rgba(242,240,255,.1);color:rgba(242,240,255,.42);font-size:.78rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;z-index:1}
-.ep-x:hover{border-color:var(--pu);color:var(--pu)}
-.ep-body{padding:22px 26px 28px}
-.ep-tag{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pu);font-weight:700;margin-bottom:7px;font-family:'IBM Plex Mono',monospace}
-.ep-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:400;line-height:.95;margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase}
-.ep-title em{font-style:normal;color:var(--pu);text-shadow:0 0 20px rgba(191,95,255,.4)}
-.ep-desc{font-size:.68rem;line-height:1.8;color:rgba(242,240,255,.44);margin-bottom:18px;font-family:'IBM Plex Mono',monospace}
-.ep-form{display:flex;gap:8px;flex-wrap:wrap}
-.ep-input{flex:1;min-width:160px;background:rgba(191,95,255,.04);border:1px solid rgba(191,95,255,.18);padding:10px 16px;color:var(--chalk);font-family:'IBM Plex Mono',monospace;font-size:.7rem;outline:none;transition:border-color .25s;border-radius:0}
-.ep-input::placeholder{color:rgba(242,240,255,.22)}
-.ep-input:focus{border-color:var(--pu);box-shadow:0 0 12px rgba(191,95,255,.15)}
-.ep-submit{background:var(--pu);color:var(--ink);border:none;padding:10px 20px;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .25s;font-family:'IBM Plex Mono',monospace;box-shadow:0 0 16px rgba(191,95,255,.3)}
-.ep-submit:hover{background:var(--pu-lt);box-shadow:0 0 28px rgba(191,95,255,.5)}
-.ep-skip{display:block;text-align:center;margin-top:11px;font-size:.52rem;color:rgba(242,240,255,.22);cursor:pointer;letter-spacing:.1em;transition:color .25s;font-family:'IBM Plex Mono',monospace}
-.ep-skip:hover{color:rgba(242,240,255,.5)}
-
-/* ═══════════════════════════════════════
    FLOAT SCROLL TOP
 ═══════════════════════════════════════ */
 .float-top{position:fixed;bottom:22px;right:22px;z-index:190;display:flex;align-items:center;justify-content:center;background:var(--pu);color:var(--ink);border:none;width:48px;height:48px;cursor:pointer;box-shadow:0 0 24px rgba(191,95,255,.5);transition:transform .3s,box-shadow .3s,opacity .4s;opacity:0;pointer-events:none;-webkit-tap-highlight-color:transparent}
@@ -1074,27 +1058,8 @@ footer{
   </div>
 </div>
 
-<!-- EMAIL POPUP -->
-<div class="email-popup" id="emailPopup">
-  <div class="ep-card">
-    <button class="ep-x" id="epX">&#x2715;</button>
-    <div class="ep-img">
-      <img src="img2.jpeg" alt="Flawless install">
-      <div class="ep-img-veil"></div>
-      <div class="ep-badge">Members Only</div>
-    </div>
-    <div class="ep-body" id="epBody">
-      <div class="ep-tag">// Join the VIP List</div>
-      <h2 class="ep-title">Get <em>10% Off</em><br>Your First Install</h2>
-      <p class="ep-desc">Sign up for exclusive early booking access, VIP offers, and style inspo straight to your inbox.</p>
-      <div class="ep-form">
-        <input class="ep-input" type="email" id="epEmail" placeholder="Enter your email...">
-        <button class="ep-submit" id="epSubmit">Claim Offer</button>
-      </div>
-      <span class="ep-skip" id="epSkip">No thanks, I'll pay full price</span>
-    </div>
-  </div>
-</div>
+<!-- EMAIL POPUP — Flodesk handles rendering via the script above -->
+<!-- The fd('form') call at the top injects Flodesk's own popup overlay automatically -->
 
 <!-- SCROLL TO TOP -->
 <button class="float-top" id="floatTop" aria-label="Back to top">
@@ -1177,7 +1142,7 @@ footer{
   </div>
   <!-- RIGHT: image -->
   <div class="hero-right">
-    <img src="img7.jpeg" alt="Flawless wig install">
+    <img src="img4.jpeg" alt="Flawless wig install">
     <div class="hero-scroll">Scroll</div>
   </div>
 </section>
@@ -1586,19 +1551,7 @@ window.addEventListener('load', function(){
   }, 1400);
 });
 
-/* ── EMAIL POPUP ── */
-var emailPopup = document.getElementById('emailPopup');
-function showEmailPopup(){ /* disabled — Flodesk popup handles this */ }
-function hideEmailPopup(){
-  emailPopup.classList.remove('show');
-  document.body.style.overflow='';
-  sessionStorage.setItem('ep_done','1');
-}
-document.getElementById('epX').addEventListener('click', hideEmailPopup);
-document.getElementById('epSkip').addEventListener('click', hideEmailPopup);
-emailPopup.addEventListener('click', function(e){ if(e.target===emailPopup) hideEmailPopup(); });
-
-/* ── FLODESK subscribe via Netlify ── */
+/* ── FLODESK subscribe via Netlify (footer) ── */
 function subscribeToFlodesk(email, onSuccess, onError){
   fetch('/.netlify/functions/subscribe',{
     method:'POST',
@@ -1608,16 +1561,6 @@ function subscribeToFlodesk(email, onSuccess, onError){
   .then(function(res){ if(res.ok||res.status===200||res.status===201){ onSuccess(); }else{ onError(); } })
   .catch(function(){ onError(); });
 }
-document.getElementById('epSubmit').addEventListener('click', function(){
-  var em=document.getElementById('epEmail').value.trim();
-  if(!em||!em.includes('@')){ document.getElementById('epEmail').style.borderColor='var(--pu-dk)'; return; }
-  subscribeToFlodesk(em, function(){
-    document.getElementById('epBody').innerHTML='<div style="text-align:center;padding:18px 0"><div style="font-family:Bebas Neue,sans-serif;font-size:3.5rem;color:var(--pu);text-shadow:0 0 16px rgba(191,95,255,.4);margin-bottom:11px">&#10003;</div><div style="font-family:Bebas Neue,sans-serif;font-size:2rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px">You\'re on the list!</div><p style="font-size:.72rem;color:rgba(242,240,255,.44);line-height:1.8;font-family:IBM Plex Mono,monospace">Your 10% code goes to <strong style="color:var(--pu-lt)">'+em+'</strong> shortly.</p><button onclick="hideEmailPopup()" style="margin-top:20px;display:inline-flex;padding:10px 24px;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;background:var(--pu);color:var(--ink);border:none;cursor:pointer;font-family:IBM Plex Mono,monospace;box-shadow:0 0 16px rgba(191,95,255,.4);">Continue to Site</button></div>';
-    setTimeout(hideEmailPopup, 4000);
-  }, function(){
-    document.getElementById('epBody').innerHTML='<div style="text-align:center;padding:18px 0"><div style="font-size:3rem;margin-bottom:11px">&#x26A0;</div><p style="font-size:.72rem;color:rgba(242,240,255,.44);line-height:1.8;font-family:IBM Plex Mono,monospace">Something went wrong. Please try again.</p><button onclick="hideEmailPopup()" style="margin-top:20px;display:inline-flex;padding:10px 24px;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;background:rgba(242,240,255,.1);color:var(--chalk);border:none;cursor:pointer;font-family:IBM Plex Mono,monospace;">Close</button></div>';
-  });
-});
 
 /* ── FOOTER SUBSCRIBE ── */
 document.getElementById('footerSubscribe').addEventListener('click',function(){
@@ -1876,12 +1819,32 @@ if(document.getElementById('wlFullForm')){
 }
 
 /* ── SERVICE DRAG SCROLL ── */
+/* ── SERVICE DRAG & TOUCH SCROLL ── */
 var svcWrap=document.getElementById('svcScrollWrap');
 var isDown=false, startX, scrollLeft;
+
+/* mouse drag (desktop) */
 svcWrap.addEventListener('mousedown',function(e){ isDown=true; svcWrap.style.cursor='grabbing'; startX=e.pageX-svcWrap.offsetLeft; scrollLeft=svcWrap.scrollLeft; });
 svcWrap.addEventListener('mouseleave',function(){ isDown=false; svcWrap.style.cursor='grab'; });
 svcWrap.addEventListener('mouseup',function(){ isDown=false; svcWrap.style.cursor='grab'; });
 svcWrap.addEventListener('mousemove',function(e){ if(!isDown) return; e.preventDefault(); var x=e.pageX-svcWrap.offsetLeft; var walk=(x-startX)*1.5; svcWrap.scrollLeft=scrollLeft-walk; });
+
+/* touch swipe (mobile) — let native scroll handle it, just snap on end */
+var svcTouchStartX=0, svcTouchStartScroll=0;
+svcWrap.addEventListener('touchstart',function(e){
+  svcTouchStartX=e.touches[0].clientX;
+  svcTouchStartScroll=svcWrap.scrollLeft;
+},{passive:true});
+svcWrap.addEventListener('touchmove',function(e){
+  var dx=svcTouchStartX-e.touches[0].clientX;
+  svcWrap.scrollLeft=svcTouchStartScroll+dx;
+},{passive:true});
+svcWrap.addEventListener('touchend',function(e){
+  /* snap to nearest card */
+  var cardW=svcWrap.querySelector('.svc-card').offsetWidth+14;
+  var snapped=Math.round(svcWrap.scrollLeft/cardW)*cardW;
+  svcWrap.scrollTo({left:snapped,behavior:'smooth'});
+},{passive:true});
 
 /* ── CUSTOM CURSOR ── */
 if(window.matchMedia('(pointer:fine)').matches){
