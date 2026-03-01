@@ -2022,6 +2022,7 @@ var svcCards = Array.from(svcWrap.querySelectorAll('.svc-card'));
 var svcDotsEl = document.getElementById('svcDots');
 var svcCur = 0;
 var svcAutoTimer = null;
+var svcScrolling = false; // guard: don't advance while a scroll animation is running
 
 // build dots
 svcCards.forEach(function(_, i){
@@ -2031,22 +2032,35 @@ svcCards.forEach(function(_, i){
   svcDotsEl.appendChild(d);
 });
 
-function svcGoTo(n){
-  svcCur = Math.max(0, Math.min(n, svcCards.length - 1));
-  var cardW = svcCards[0].offsetWidth + 14;
-  svcWrap.scrollTo({ left: svcCur * cardW, behavior: 'smooth' });
-  // update dots
+function svcUpdateUI(){
   svcDotsEl.querySelectorAll('.svc-nav-dot').forEach(function(d, i){
     d.classList.toggle('active', i === svcCur);
   });
-  // update arrow states
   document.getElementById('svcPrev').disabled = svcCur === 0;
   document.getElementById('svcNext').disabled = svcCur === svcCards.length - 1;
 }
 
-function svcStartAuto(){ svcAutoTimer = setInterval(function(){ svcGoTo(svcCur >= svcCards.length - 1 ? 0 : svcCur + 1); }, 3800); }
-function svcStopAuto(){ clearInterval(svcAutoTimer); }
-function svcResetAuto(){ svcStopAuto(); svcStartAuto(); }
+function svcGoTo(n){
+  svcCur = Math.max(0, Math.min(n, svcCards.length - 1));
+  var cardW = svcCards[0].offsetWidth + 14;
+  svcScrolling = true;
+  svcWrap.scrollTo({ left: svcCur * cardW, behavior: 'smooth' });
+  // clear scrolling flag after transition finishes (~500ms)
+  clearTimeout(svcWrap._scrollEndTimer);
+  svcWrap._scrollEndTimer = setTimeout(function(){ svcScrolling = false; }, 520);
+  svcUpdateUI();
+}
+
+function svcStartAuto(){
+  svcStopAuto();
+  svcAutoTimer = setInterval(function(){
+    if(svcScrolling) return; // skip tick if still animating
+    var next = svcCur >= svcCards.length - 1 ? 0 : svcCur + 1;
+    svcGoTo(next);
+  }, 5000);
+}
+function svcStopAuto(){ clearInterval(svcAutoTimer); svcAutoTimer = null; }
+function svcResetAuto(){ svcStopAuto(); if(window.innerWidth < 1024) svcStartAuto(); }
 
 document.getElementById('svcPrev').addEventListener('click', function(){ svcGoTo(svcCur - 1); svcResetAuto(); });
 document.getElementById('svcNext').addEventListener('click', function(){ svcGoTo(svcCur + 1); svcResetAuto(); });
@@ -2054,33 +2068,21 @@ document.getElementById('svcNext').addEventListener('click', function(){ svcGoTo
 // Only auto-advance on mobile/tablet
 if(window.innerWidth < 1024){ svcStartAuto(); }
 window.addEventListener('resize', function(){
+  svcStopAuto();
   svcGoTo(0);
-  if(window.innerWidth < 1024){ svcStartAuto(); } else { svcStopAuto(); }
+  if(window.innerWidth < 1024){ svcStartAuto(); }
 });
 
-// Sync dot + button state when user natively scrolls
-svcWrap.addEventListener('scroll', function(){
-  var cardW = svcCards[0].offsetWidth + 14;
-  var nearest = Math.round(svcWrap.scrollLeft / cardW);
-  if(nearest !== svcCur){
-    svcCur = nearest;
-    svcDotsEl.querySelectorAll('.svc-nav-dot').forEach(function(d, i){ d.classList.toggle('active', i === svcCur); });
-    document.getElementById('svcPrev').disabled = svcCur === 0;
-    document.getElementById('svcNext').disabled = svcCur === svcCards.length - 1;
-  }
-}, { passive: true });
-
 // Touch swipe
-var svcTouchStartX = 0, svcTouchStartScroll = 0;
+var svcTouchStartX = 0;
 svcWrap.addEventListener('touchstart', function(e){
   svcTouchStartX = e.touches[0].clientX;
-  svcTouchStartScroll = svcWrap.scrollLeft;
   svcStopAuto();
 }, { passive: true });
 svcWrap.addEventListener('touchend', function(e){
   var dx = svcTouchStartX - e.changedTouches[0].clientX;
   if(Math.abs(dx) > 40){ svcGoTo(dx > 0 ? svcCur + 1 : svcCur - 1); }
-  svcResetAuto();
+  if(window.innerWidth < 1024) svcResetAuto();
 }, { passive: true });
 
 // Mouse drag (desktop only)
