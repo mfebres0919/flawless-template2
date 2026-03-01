@@ -341,7 +341,30 @@ nav.solid{background:rgba(6,6,10,.99)}
 .svc-price{font-size:.62rem;color:var(--pu-lt);margin-top:3px;font-family:'IBM Plex Mono',monospace}
 .svc-book-btn{display:inline-flex;align-items:center;gap:5px;margin-top:14px;padding:8px 18px;font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;background:var(--pu);color:var(--ink);border:none;cursor:pointer;transition:all .25s;-webkit-tap-highlight-color:transparent;font-family:'IBM Plex Mono',monospace;box-shadow:0 0 14px rgba(191,95,255,.3)}
 .svc-book-btn:hover{background:var(--pu-lt);box-shadow:0 0 22px rgba(191,95,255,.5)}
-.svc-drag-hint{display:flex;align-items:center;gap:8px;margin-top:20px;padding-right:var(--pad);font-size:.46rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,240,255,.25);font-family:'IBM Plex Mono',monospace}
+/* service nav arrows + dots — mobile/tablet only */
+.svc-nav{
+  display:flex;align-items:center;gap:12px;margin-top:18px;padding-left:var(--pad);
+}
+@media(min-width:1024px){.svc-nav{display:none}} /* hide on desktop */
+.svc-arr{
+  width:40px;height:40px;
+  border:1px solid rgba(191,95,255,.3);
+  background:transparent;color:var(--chalk);
+  font-size:1rem;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .22s;-webkit-tap-highlight-color:transparent;
+  font-family:'IBM Plex Mono',monospace;flex-shrink:0;
+}
+.svc-arr:hover,.svc-arr:active{background:var(--pu);border-color:var(--pu);color:var(--ink);box-shadow:0 0 16px rgba(191,95,255,.45)}
+.svc-arr:disabled{opacity:.25;pointer-events:none}
+.svc-nav-dots{display:flex;gap:6px;align-items:center;margin-left:4px}
+.svc-nav-dot{
+  width:6px;height:6px;background:rgba(191,95,255,.2);
+  transition:all .3s;cursor:pointer;border-radius:0;
+}
+.svc-nav-dot.active{background:var(--pu);width:20px;box-shadow:0 0 6px rgba(191,95,255,.5)}
+
+/* hide drag hint on mobile since arrows replace it */
+@media(max-width:1023px){.svc-drag-hint{display:none}}
 .svc-drag-hint::before{content:'←→';font-size:.7rem;color:var(--pu);opacity:.5}
 
 /* ═══════════════════════════════════════
@@ -522,8 +545,25 @@ nav.solid{background:rgba(6,6,10,.99)}
   font-family:'IBM Plex Mono',monospace;
 }
 .gal-arrow:hover{background:var(--pu);border-color:var(--pu);color:var(--ink);box-shadow:0 0 20px rgba(191,95,255,.5)}
-/* dot indicators */
-.gal-dots{display:flex;gap:6px;margin-top:20px;flex-wrap:wrap}
+/* Hide counter/arrows/dots in panel on mobile — shown below slideshow instead */
+@media(max-width:759px){
+  .gal-counter, .gal-nav, .gal-dots { display:none; }
+}
+/* Mobile controls bar — below the slideshow */
+.gal-mobile-controls{
+  display:none;
+  align-items:center;
+  gap:12px;
+  padding:16px var(--pad) 0;
+}
+@media(max-width:759px){ .gal-mobile-controls{ display:flex; } }
+.gal-mob-counter{
+  font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;
+  color:rgba(242,240,255,.3);margin-right:4px;white-space:nowrap;
+}
+.gal-mob-counter em{font-style:normal;color:var(--pu);font-size:1.3rem}
+.gal-mob-dots{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+/* shared dot style for both desktop panel and mobile bar */
 .gal-dot{width:6px;height:6px;background:rgba(191,95,255,.25);transition:all .3s;cursor:pointer;flex-shrink:0}
 .gal-dot.active{background:var(--pu);width:22px;box-shadow:0 0 8px rgba(191,95,255,.6)}
 
@@ -1327,6 +1367,12 @@ footer{
     </div>
   </div>
   <div class="svc-drag-hint">Drag to explore all services</div>
+  <!-- Mobile / tablet arrow nav -->
+  <div class="svc-nav">
+    <button class="svc-arr" id="svcPrev" aria-label="Previous service">&#8592;</button>
+    <button class="svc-arr" id="svcNext" aria-label="Next service">&#8594;</button>
+    <div class="svc-nav-dots" id="svcDots"></div>
+  </div>
 </section>
 
 <!-- ═══ WAITLIST — BIG BANNER ═══ -->
@@ -1440,6 +1486,15 @@ footer{
     </div>
 
   </div>
+
+  <!-- Mobile controls: counter + arrows + dots — sits below photos -->
+  <div class="gal-mobile-controls">
+    <div class="gal-mob-counter">Photo <em id="galCurMob">01</em></div>
+    <button class="gal-arrow" id="galPrevMob">&#8592;</button>
+    <button class="gal-arrow" id="galNextMob">&#8594;</button>
+    <div class="gal-mob-dots" id="galDotsMob"></div>
+  </div>
+
 </section>
 
 <!-- ═══ CTA BAND ═══ -->
@@ -1851,36 +1906,47 @@ startAuto();
 var galTrack = document.getElementById('galTrack');
 var galSlides = Array.from(galTrack.querySelectorAll('.gal-slide'));
 var galDotsEl = document.getElementById('galDots');
+var galDotsMobEl = document.getElementById('galDotsMob');
 var galCurEl = document.getElementById('galCur');
+var galCurMobEl = document.getElementById('galCurMob');
 var galCur = 0;
 var galTotal = galSlides.length;
 var galAutoTimer = null;
 
-// build dots
-galSlides.forEach(function(_, i){
-  var d = document.createElement('span');
-  d.className = 'gal-dot' + (i===0?' active':'');
-  d.addEventListener('click', function(){ galGoTo(i); galResetAuto(); });
-  galDotsEl.appendChild(d);
+// build dots in BOTH containers
+[galDotsEl, galDotsMobEl].forEach(function(container){
+  galSlides.forEach(function(_, i){
+    var d = document.createElement('span');
+    d.className = 'gal-dot' + (i===0?' active':'');
+    d.addEventListener('click', function(){ galGoTo(i); galResetAuto(); });
+    container.appendChild(d);
+  });
 });
 
 function galGoTo(n){
   galSlides[galCur].classList.remove('active-slide');
   galCur = (n + galTotal) % galTotal;
   galSlides[galCur].classList.add('active-slide');
-  // slide width + gap
   var slideW = galSlides[0].offsetWidth + 12;
   galTrack.style.transform = 'translateX(-' + (galCur * slideW) + 'px)';
-  // update counter
-  galCurEl.textContent = String(galCur + 1).padStart(2, '0');
-  // update dots
-  galDotsEl.querySelectorAll('.gal-dot').forEach(function(d, i){
-    d.classList.toggle('active', i === galCur);
+  // update both counters
+  var label = String(galCur + 1).padStart(2, '0');
+  galCurEl.textContent = label;
+  galCurMobEl.textContent = label;
+  // update both dot sets
+  [galDotsEl, galDotsMobEl].forEach(function(container){
+    container.querySelectorAll('.gal-dot').forEach(function(d, i){
+      d.classList.toggle('active', i === galCur);
+    });
   });
 }
 
+// desktop panel arrows
 document.getElementById('galPrev').addEventListener('click', function(){ galGoTo(galCur - 1); galResetAuto(); });
 document.getElementById('galNext').addEventListener('click', function(){ galGoTo(galCur + 1); galResetAuto(); });
+// mobile bottom arrows
+document.getElementById('galPrevMob').addEventListener('click', function(){ galGoTo(galCur - 1); galResetAuto(); });
+document.getElementById('galNextMob').addEventListener('click', function(){ galGoTo(galCur + 1); galResetAuto(); });
 
 function galStartAuto(){ galAutoTimer = setInterval(function(){ galGoTo(galCur + 1); }, 3500); }
 function galStopAuto(){ clearInterval(galAutoTimer); }
@@ -1897,7 +1963,7 @@ galTrack.addEventListener('touchend', function(e){
   galResetAuto();
 });
 
-// keyboard arrows (when gallery in view)
+// keyboard arrows
 document.addEventListener('keydown', function(e){
   if(lb.classList.contains('open')) return;
   if(e.key === 'ArrowLeft') { galGoTo(galCur - 1); galResetAuto(); }
@@ -1950,33 +2016,79 @@ if(document.getElementById('wlFullForm')){
   document.getElementById('wlFullForm').addEventListener('click', openWaitlist);
 }
 
-/* ── SERVICE DRAG SCROLL ── */
-/* ── SERVICE DRAG & TOUCH SCROLL ── */
-var svcWrap=document.getElementById('svcScrollWrap');
-var isDown=false, startX, scrollLeft;
+/* ── SERVICES CAROUSEL ── */
+var svcWrap = document.getElementById('svcScrollWrap');
+var svcCards = Array.from(svcWrap.querySelectorAll('.svc-card'));
+var svcDotsEl = document.getElementById('svcDots');
+var svcCur = 0;
+var svcAutoTimer = null;
 
-/* mouse drag (desktop) */
-svcWrap.addEventListener('mousedown',function(e){ isDown=true; svcWrap.style.cursor='grabbing'; startX=e.pageX-svcWrap.offsetLeft; scrollLeft=svcWrap.scrollLeft; });
-svcWrap.addEventListener('mouseleave',function(){ isDown=false; svcWrap.style.cursor='grab'; });
-svcWrap.addEventListener('mouseup',function(){ isDown=false; svcWrap.style.cursor='grab'; });
-svcWrap.addEventListener('mousemove',function(e){ if(!isDown) return; e.preventDefault(); var x=e.pageX-svcWrap.offsetLeft; var walk=(x-startX)*1.5; svcWrap.scrollLeft=scrollLeft-walk; });
+// build dots
+svcCards.forEach(function(_, i){
+  var d = document.createElement('span');
+  d.className = 'svc-nav-dot' + (i === 0 ? ' active' : '');
+  d.addEventListener('click', function(){ svcGoTo(i); svcResetAuto(); });
+  svcDotsEl.appendChild(d);
+});
 
-/* touch swipe (mobile) — let native scroll handle it, just snap on end */
-var svcTouchStartX=0, svcTouchStartScroll=0;
-svcWrap.addEventListener('touchstart',function(e){
-  svcTouchStartX=e.touches[0].clientX;
-  svcTouchStartScroll=svcWrap.scrollLeft;
-},{passive:true});
-svcWrap.addEventListener('touchmove',function(e){
-  var dx=svcTouchStartX-e.touches[0].clientX;
-  svcWrap.scrollLeft=svcTouchStartScroll+dx;
-},{passive:true});
-svcWrap.addEventListener('touchend',function(e){
-  /* snap to nearest card */
-  var cardW=svcWrap.querySelector('.svc-card').offsetWidth+14;
-  var snapped=Math.round(svcWrap.scrollLeft/cardW)*cardW;
-  svcWrap.scrollTo({left:snapped,behavior:'smooth'});
-},{passive:true});
+function svcGoTo(n){
+  svcCur = Math.max(0, Math.min(n, svcCards.length - 1));
+  var cardW = svcCards[0].offsetWidth + 14;
+  svcWrap.scrollTo({ left: svcCur * cardW, behavior: 'smooth' });
+  // update dots
+  svcDotsEl.querySelectorAll('.svc-nav-dot').forEach(function(d, i){
+    d.classList.toggle('active', i === svcCur);
+  });
+  // update arrow states
+  document.getElementById('svcPrev').disabled = svcCur === 0;
+  document.getElementById('svcNext').disabled = svcCur === svcCards.length - 1;
+}
+
+function svcStartAuto(){ svcAutoTimer = setInterval(function(){ svcGoTo(svcCur >= svcCards.length - 1 ? 0 : svcCur + 1); }, 3800); }
+function svcStopAuto(){ clearInterval(svcAutoTimer); }
+function svcResetAuto(){ svcStopAuto(); svcStartAuto(); }
+
+document.getElementById('svcPrev').addEventListener('click', function(){ svcGoTo(svcCur - 1); svcResetAuto(); });
+document.getElementById('svcNext').addEventListener('click', function(){ svcGoTo(svcCur + 1); svcResetAuto(); });
+
+// Only auto-advance on mobile/tablet
+if(window.innerWidth < 1024){ svcStartAuto(); }
+window.addEventListener('resize', function(){
+  svcGoTo(0);
+  if(window.innerWidth < 1024){ svcStartAuto(); } else { svcStopAuto(); }
+});
+
+// Sync dot + button state when user natively scrolls
+svcWrap.addEventListener('scroll', function(){
+  var cardW = svcCards[0].offsetWidth + 14;
+  var nearest = Math.round(svcWrap.scrollLeft / cardW);
+  if(nearest !== svcCur){
+    svcCur = nearest;
+    svcDotsEl.querySelectorAll('.svc-nav-dot').forEach(function(d, i){ d.classList.toggle('active', i === svcCur); });
+    document.getElementById('svcPrev').disabled = svcCur === 0;
+    document.getElementById('svcNext').disabled = svcCur === svcCards.length - 1;
+  }
+}, { passive: true });
+
+// Touch swipe
+var svcTouchStartX = 0, svcTouchStartScroll = 0;
+svcWrap.addEventListener('touchstart', function(e){
+  svcTouchStartX = e.touches[0].clientX;
+  svcTouchStartScroll = svcWrap.scrollLeft;
+  svcStopAuto();
+}, { passive: true });
+svcWrap.addEventListener('touchend', function(e){
+  var dx = svcTouchStartX - e.changedTouches[0].clientX;
+  if(Math.abs(dx) > 40){ svcGoTo(dx > 0 ? svcCur + 1 : svcCur - 1); }
+  svcResetAuto();
+}, { passive: true });
+
+// Mouse drag (desktop only)
+var isDown = false, startX, scrollLeft;
+svcWrap.addEventListener('mousedown', function(e){ isDown = true; svcWrap.style.cursor = 'grabbing'; startX = e.pageX - svcWrap.offsetLeft; scrollLeft = svcWrap.scrollLeft; svcStopAuto(); });
+svcWrap.addEventListener('mouseleave', function(){ isDown = false; svcWrap.style.cursor = 'grab'; });
+svcWrap.addEventListener('mouseup', function(){ isDown = false; svcWrap.style.cursor = 'grab'; svcResetAuto(); });
+svcWrap.addEventListener('mousemove', function(e){ if(!isDown) return; e.preventDefault(); var x = e.pageX - svcWrap.offsetLeft; svcWrap.scrollLeft = scrollLeft - (x - startX) * 1.5; });
 
 /* ── SMOOTH SCROLL — requestAnimationFrame lerp ── */
 function smoothScrollTo(target, duration){
