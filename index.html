@@ -2092,6 +2092,16 @@ svcWrap.addEventListener('mouseleave', function(){ isDown = false; svcWrap.style
 svcWrap.addEventListener('mouseup', function(){ isDown = false; svcWrap.style.cursor = 'grab'; svcResetAuto(); });
 svcWrap.addEventListener('mousemove', function(e){ if(!isDown) return; e.preventDefault(); var x = e.pageX - svcWrap.offsetLeft; svcWrap.scrollLeft = scrollLeft - (x - startX) * 1.5; });
 
+// Mouse wheel → horizontal scroll (desktop only)
+svcWrap.addEventListener('wheel', function(e){
+  if(window.innerWidth < 1024) return; // touch devices handle their own scroll
+  e.preventDefault();
+  var cardW = svcCards[0].offsetWidth + 14;
+  var dir = e.deltaY > 0 ? 1 : -1;
+  svcGoTo(svcCur + dir);
+  svcResetAuto();
+}, { passive: false });
+
 /* ── SMOOTH SCROLL — requestAnimationFrame lerp ── */
 function smoothScrollTo(target, duration){
   var start = window.pageYOffset;
