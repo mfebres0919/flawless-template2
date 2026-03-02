@@ -1089,7 +1089,287 @@ footer{
 .soc-btn:hover{border-color:var(--pu);color:var(--pu);box-shadow:0 0 10px rgba(191,95,255,.25)}
 
 /* ═══════════════════════════════════════
-   LIGHTBOX
+   ABOUT ME
+═══════════════════════════════════════ */
+.about{
+  background:var(--ink2);
+  padding:clamp(64px,12vw,120px) var(--pad);
+  position:relative;overflow:hidden;
+}
+/* subtle grid texture */
+.about::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(191,95,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(191,95,255,.04) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+}
+.about-inner{
+  position:relative;z-index:1;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:clamp(36px,7vw,80px);
+  max-width:1100px;
+}
+@media(min-width:760px){
+  .about-inner{grid-template-columns:1fr 1fr;align-items:center}
+}
+
+/* — photo side — */
+.about-img-wrap{
+  position:relative;
+}
+.about-img-frame{
+  position:relative;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  max-width:420px;
+}
+@media(min-width:760px){.about-img-frame{max-width:100%}}
+/* purple border accent */
+.about-img-frame::before{
+  content:'';position:absolute;
+  top:-8px;left:-8px;right:8px;bottom:8px;
+  border:1px solid rgba(191,95,255,.3);
+  z-index:0;pointer-events:none;
+}
+.about-img-frame::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(6,6,10,.6) 0%,transparent 50%);
+  z-index:1;pointer-events:none;
+}
+.about-img-frame img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:top;
+  position:relative;z-index:0;
+  filter:saturate(.85);
+  transition:transform .6s cubic-bezier(.4,0,.2,1),filter .4s;
+}
+.about-img-frame:hover img{transform:scale(1.04);filter:saturate(1)}
+/* floating stat badge */
+.about-badge{
+  position:absolute;bottom:-18px;right:-14px;
+  background:var(--pu);
+  padding:14px 18px;z-index:2;
+  text-align:center;
+  box-shadow:0 0 30px rgba(191,95,255,.45);
+}
+@media(max-width:759px){.about-badge{right:0;bottom:-14px}}
+.about-badge-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.4rem;color:var(--ink);
+  line-height:1;letter-spacing:.06em;
+}
+.about-badge-label{
+  font-size:.44rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(6,6,10,.7);font-family:'IBM Plex Mono',monospace;
+  font-weight:700;margin-top:2px;
+}
+
+/* — text side — */
+.about-content{display:flex;flex-direction:column;gap:0}
+.about-eyebrow{
+  font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--pu);font-weight:700;margin-bottom:12px;
+  font-family:'IBM Plex Mono',monospace;
+}
+.about-eyebrow::before{content:'// '}
+.about-h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,7vw,5.5rem);
+  color:var(--chalk);line-height:.9;letter-spacing:.03em;
+  text-transform:uppercase;margin-bottom:20px;
+}
+.about-h2 em{font-style:normal;color:var(--pu);text-shadow:0 0 9px rgba(191,95,255,.22);animation:purpleFlickerBig 11s ease-in-out infinite}
+.about-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.4rem,3vw,2rem);
+  color:var(--pu-lt);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:18px;
+}
+.about-bio{
+  font-size:.72rem;color:rgba(242,240,255,.7);
+  line-height:2;font-family:'IBM Plex Mono',monospace;
+  margin-bottom:28px;
+}
+.about-bio strong{color:var(--chalk)}
+/* stats row */
+.about-stats{
+  display:flex;gap:clamp(18px,4vw,40px);flex-wrap:wrap;
+  padding:20px 0;margin-bottom:28px;
+  border-top:1px solid rgba(191,95,255,.15);
+  border-bottom:1px solid rgba(191,95,255,.15);
+}
+.about-stat-item{display:flex;flex-direction:column;gap:3px}
+.about-stat-n{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.6rem,3vw,2.2rem);
+  color:var(--pu);letter-spacing:.06em;line-height:1;
+  text-shadow:0 0 8px rgba(191,95,255,.22);
+  animation:purpleFlicker 7s ease-in-out infinite;
+}
+.about-stat-l{
+  font-size:.44rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(242,240,255,.55);font-family:'IBM Plex Mono',monospace;
+}
+/* social links */
+.about-socials{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.about-social-link{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 16px;border:1px solid rgba(191,95,255,.25);
+  font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(242,240,255,.65);font-family:'IBM Plex Mono',monospace;
+  transition:all .25s;text-decoration:none;
+}
+.about-social-link:hover{
+  border-color:var(--pu);color:var(--pu-lt);
+  background:rgba(191,95,255,.06);
+  box-shadow:0 0 12px rgba(191,95,255,.15);
+}
+.about-social-icon{font-size:.85rem}
+
+/* ═══════════════════════════════════════
+   NEW CLIENTS
+═══════════════════════════════════════ */
+.new-clients{
+  background:var(--ink3);
+  padding:clamp(64px,12vw,120px) var(--pad);
+  position:relative;overflow:hidden;
+}
+/* diagonal accent line */
+.new-clients::before{
+  content:'FIRST TIME?';
+  position:absolute;right:-20px;top:50%;transform:translateY(-50%) rotate(90deg);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,8vw,7rem);
+  color:rgba(191,95,255,.04);letter-spacing:.2em;
+  white-space:nowrap;pointer-events:none;
+}
+.nc-inner{position:relative;z-index:1}
+
+/* top header */
+.nc-header{
+  display:flex;flex-direction:column;gap:10px;
+  margin-bottom:clamp(36px,6vw,60px);
+}
+@media(min-width:760px){
+  .nc-header{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:40px}
+}
+.nc-eyebrow{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pu);font-weight:700;margin-bottom:10px;font-family:'IBM Plex Mono',monospace}
+.nc-eyebrow::before{content:'// '}
+.nc-h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,7vw,5.5rem);
+  color:var(--chalk);line-height:.9;letter-spacing:.03em;text-transform:uppercase;
+}
+.nc-h2 em{font-style:normal;color:var(--pu);text-shadow:0 0 9px rgba(191,95,255,.22);animation:purpleFlickerBig 9s ease-in-out infinite}
+.nc-header-sub{
+  font-size:.7rem;color:rgba(242,240,255,.6);line-height:1.85;
+  font-family:'IBM Plex Mono',monospace;max-width:320px;
+}
+@media(min-width:760px){.nc-header-sub{text-align:right}}
+
+/* two-column layout: steps left, promo right */
+.nc-body{
+  display:grid;grid-template-columns:1fr;gap:clamp(36px,6vw,60px);
+}
+@media(min-width:760px){.nc-body{grid-template-columns:1fr 1fr;align-items:start}}
+
+/* — prep steps — */
+.nc-steps{display:flex;flex-direction:column;gap:0}
+.nc-step{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:16px;
+  padding:20px 0;
+  border-bottom:1px solid rgba(191,95,255,.12);
+  transition:background .25s;
+}
+.nc-step:first-child{border-top:1px solid rgba(191,95,255,.12)}
+.nc-step-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;color:rgba(191,95,255,.2);
+  letter-spacing:.06em;line-height:1;
+  padding-top:2px;
+  transition:color .25s;
+}
+.nc-step:hover .nc-step-num{color:rgba(191,95,255,.5)}
+.nc-step-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.1rem,2.5vw,1.4rem);
+  color:var(--chalk);letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:5px;line-height:1.1;
+}
+.nc-step-text{
+  font-size:.68rem;color:rgba(242,240,255,.62);
+  line-height:1.8;font-family:'IBM Plex Mono',monospace;
+}
+
+/* — promo card — */
+.nc-promo{
+  background:var(--ink4);
+  border:1px solid rgba(191,95,255,.2);
+  padding:clamp(24px,4vw,40px);
+  position:relative;overflow:hidden;
+}
+/* glow orb behind promo */
+.nc-promo::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(191,95,255,.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+.nc-promo-tag{
+  font-size:.48rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--pu);font-weight:700;margin-bottom:14px;
+  font-family:'IBM Plex Mono',monospace;
+}
+.nc-promo-tag::before{content:'✦ '}
+.nc-promo-h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.2rem,5vw,3.5rem);
+  color:var(--chalk);line-height:.9;letter-spacing:.04em;
+  text-transform:uppercase;margin-bottom:10px;
+}
+.nc-promo-h3 em{font-style:normal;color:var(--pu);text-shadow:0 0 9px rgba(191,95,255,.22);animation:purpleFlicker 8s ease-in-out infinite}
+.nc-promo-desc{
+  font-size:.7rem;color:rgba(242,240,255,.65);line-height:1.85;
+  font-family:'IBM Plex Mono',monospace;margin-bottom:22px;
+}
+.nc-code-box{
+  background:rgba(191,95,255,.08);border:1px dashed rgba(191,95,255,.3);
+  padding:12px 16px;margin-bottom:24px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  flex-wrap:wrap;
+}
+.nc-code{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.8rem;color:var(--pu);letter-spacing:.2em;
+  text-shadow:0 0 8px rgba(191,95,255,.3);
+}
+.nc-code-label{
+  font-size:.48rem;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(242,240,255,.45);font-family:'IBM Plex Mono',monospace;
+}
+.nc-what-wrap{margin-bottom:24px}
+.nc-what-title{
+  font-size:.5rem;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(242,240,255,.45);font-family:'IBM Plex Mono',monospace;
+  margin-bottom:10px;
+}
+.nc-what-list{display:flex;flex-direction:column;gap:8px}
+.nc-what-item{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.68rem;color:rgba(242,240,255,.68);
+  line-height:1.6;font-family:'IBM Plex Mono',monospace;
+}
+.nc-what-dot{
+  width:6px;height:6px;background:var(--pu);flex-shrink:0;
+  margin-top:5px;box-shadow:0 0 5px rgba(191,95,255,.5);
+}
+
+
 ═══════════════════════════════════════ */
 .lightbox{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s;padding:20px}
 .lightbox.open{opacity:1;pointer-events:all}
@@ -1245,7 +1525,9 @@ footer{
 
 <!-- MOBILE MENU -->
 <div class="mob-menu" id="mobMenu">
+  <a href="#about" class="mm-l">About</a>
   <a href="#services" class="mm-l">Services</a>
+  <a href="#new-clients" class="mm-l">New Clients</a>
   <a href="#gallery" class="mm-l">Gallery</a>
   <a href="#testimonials" class="mm-l">Reviews</a>
   <a href="#faq" class="mm-l">FAQ</a>
@@ -1256,12 +1538,14 @@ footer{
 <!-- NAV — centered logo -->
 <nav id="nav">
   <ul class="nav-left">
+    <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#testimonials">Reviews</a></li>
   </ul>
   <div class="nav-logo-center">Flawless<em>Wig</em> Studio</div>
   <ul class="nav-right">
+    <li><a href="#new-clients">New Clients</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
     <li class="nav-book-right"><button class="btn btn-pu" id="navBook" style="padding:7px 16px;font-size:.48rem;">Book Now</button></li>
@@ -1312,6 +1596,152 @@ footer{
     <span>Silk Press</span><span class="sep">&#x2726;</span>
   </div>
 </div>
+
+<!-- ═══ ABOUT ME ═══ -->
+<section class="about" id="about">
+  <div class="about-inner">
+
+    <!-- LEFT: photo -->
+    <div class="about-img-wrap">
+      <div class="about-img-frame">
+        <img src="img2.jpeg" alt="Flawless Wig Studio stylist">
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-num">5+</div>
+        <div class="about-badge-label">Years of<br>Excellence</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: content -->
+    <div class="about-content">
+      <div class="about-eyebrow">Meet Your Stylist</div>
+      <h2 class="about-h2">The Artist<br>Behind <em>Flawless</em></h2>
+      <div class="about-name">✦ Founder &amp; Lead Stylist</div>
+      <p class="about-bio">
+        Hey, I'm the face behind <strong>Flawless Wig Studio</strong> — and I've been obsessed with the art of wig installs since day one. What started as a passion turned into a craft, and that craft turned into a studio where every single client leaves feeling like the most beautiful version of themselves.<br><br>
+        I specialize in <strong>undetectable lace melts</strong>, custom styling, and making sure your install lasts. I believe every head of hair tells a story — and I'm here to make sure yours is flawless.
+      </p>
+
+      <!-- credentials stats -->
+      <div class="about-stats">
+        <div class="about-stat-item">
+          <span class="about-stat-n">5+</span>
+          <span class="about-stat-l">Years Experience</span>
+        </div>
+        <div class="about-stat-item">
+          <span class="about-stat-n">500+</span>
+          <span class="about-stat-l">Installs Done</span>
+        </div>
+        <div class="about-stat-item">
+          <span class="about-stat-n">5.0</span>
+          <span class="about-stat-l">Google Rating</span>
+        </div>
+        <div class="about-stat-item">
+          <span class="about-stat-n">47+</span>
+          <span class="about-stat-l">Reviews</span>
+        </div>
+      </div>
+
+      <!-- social links -->
+      <div class="about-socials">
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="about-social-link">
+          <span class="about-social-icon">&#x1F4F7;</span> Instagram
+        </a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" class="about-social-link">
+          <span class="about-social-icon">&#x266B;</span> TikTok
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="about-social-link">
+          <span class="about-social-icon">&#x1F4AC;</span> Facebook
+        </a>
+      </div>
+
+      <button class="btn btn-pu" onclick="openBooking('General')" style="align-self:flex-start;padding:12px 28px">Book With Me</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ NEW CLIENTS ═══ -->
+<section class="new-clients" id="new-clients">
+  <div class="nc-inner">
+
+    <div class="nc-header">
+      <div>
+        <div class="nc-eyebrow">First Visit?</div>
+        <h2 class="nc-h2">Welcome,<br><em>New Client</em></h2>
+      </div>
+      <p class="nc-header-sub">Everything you need to know before your first appointment — so you can walk in confident and walk out obsessed.</p>
+    </div>
+
+    <div class="nc-body">
+
+      <!-- LEFT: prep steps -->
+      <div class="nc-steps">
+
+        <div class="nc-step">
+          <div class="nc-step-num">01</div>
+          <div>
+            <div class="nc-step-title">What to Expect</div>
+            <p class="nc-step-text">Your first appointment is a full experience. We start with a quick consultation about your hair goals, lifestyle, and the look you're going for. From there, I handle everything — lace prep, adhesive application, and styling — so you leave looking completely natural.</p>
+          </div>
+        </div>
+
+        <div class="nc-step">
+          <div class="nc-step-num">02</div>
+          <div>
+            <div class="nc-step-title">Come With Clean Hair</div>
+            <p class="nc-step-text">Please arrive with your natural hair freshly washed, blown out, and laid flat. No braids, twists, or product buildup. Clean, flat hair = the best possible install and a longer-lasting result.</p>
+          </div>
+        </div>
+
+        <div class="nc-step">
+          <div class="nc-step-num">03</div>
+          <div>
+            <div class="nc-step-title">Have Your Wig Ready</div>
+            <p class="nc-step-text">Bring your wig pre-plucked if possible, but don't worry if not — I can customize the hairline. If you need help sourcing a wig, reach out before your appointment and I'll point you in the right direction.</p>
+          </div>
+        </div>
+
+        <div class="nc-step">
+          <div class="nc-step-num">04</div>
+          <div>
+            <div class="nc-step-title">Plan Your Time</div>
+            <p class="nc-step-text">A typical install takes 2–3 hours depending on the service. Don't rush — good work takes time. Come fed, relaxed, and ready to be transformed. Bring headphones if you like music!</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: promo card -->
+      <div class="nc-promo">
+        <div class="nc-promo-tag">New Client Exclusive</div>
+        <h3 class="nc-promo-h3">10% Off<br>Your <em>First Install</em></h3>
+        <p class="nc-promo-desc">First-time clients get 10% off any wig install service. Use the code below when booking online, or mention it at your appointment.</p>
+
+        <div class="nc-code-box">
+          <div>
+            <div class="nc-code">FLAWLESS10</div>
+            <div class="nc-code-label">Promo code — first install only</div>
+          </div>
+          <button onclick="navigator.clipboard.writeText('FLAWLESS10').then(function(){ this.textContent='Copied!'; var b=this; setTimeout(function(){ b.textContent='Copy'; },2000); }.bind(this))" style="background:var(--pu);border:none;color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:7px 14px;cursor:pointer;white-space:nowrap;transition:all .2s">Copy</button>
+        </div>
+
+        <div class="nc-what-wrap">
+          <div class="nc-what-title">What's Included</div>
+          <div class="nc-what-list">
+            <div class="nc-what-item"><div class="nc-what-dot"></div>Full lace melt &amp; adhesive application</div>
+            <div class="nc-what-item"><div class="nc-what-dot"></div>Hairline customization &amp; baby hair styling</div>
+            <div class="nc-what-item"><div class="nc-what-dot"></div>Style &amp; finish to your preference</div>
+            <div class="nc-what-item"><div class="nc-what-dot"></div>Aftercare tips to protect your install</div>
+          </div>
+        </div>
+
+        <button class="btn btn-pu" onclick="openBooking('General')" style="width:100%;justify-content:center;padding:14px 24px;font-size:.54rem">Book Your First Appointment &#8594;</button>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ═══ SERVICES — HORIZONTAL SCROLL ═══ -->
 <section class="services" id="services">
@@ -1702,7 +2132,7 @@ footer{
       <p class="foot-desc">Book your flawless install today and step out with confidence. Where Beauty Meets Precision.</p>
       <div class="newsletter"><input type="email" id="footerEmail" placeholder="Your email..."><button id="footerSubscribe">Subscribe</button></div>
     </div>
-    <div class="foot-col"><h4>Pages</h4><ul><li><a href="#">Home</a></li><li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="foot-col"><h4>Pages</h4><ul><li><a href="#">Home</a></li><li><a href="#about">About</a></li><li><a href="#new-clients">New Clients</a></li><li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></div>
     <div class="foot-col"><h4>Info</h4><ul><li><a href="#">Terms &amp; Conditions</a></li><li><a href="#">Payment Methods</a></li><li><a href="#">Policies</a></li><li><a href="#">Returns</a></li></ul></div>
     <div class="foot-col"><h4>Social</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li></ul></div>
   </div>
