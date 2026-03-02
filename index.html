@@ -1655,7 +1655,7 @@ footer{
         </a>
       </div>
 
-      <button class="btn btn-pu" onclick="openBooking('General')" style="align-self:flex-start;padding:12px 28px">Book With Me</button>
+      <button class="btn btn-pu" onclick="scrollToServices()" style="align-self:flex-start;padding:12px 28px">Book With Me</button>
     </div>
 
   </div>
@@ -1736,7 +1736,7 @@ footer{
           </div>
         </div>
 
-        <button class="btn btn-pu" onclick="openBooking('General')" style="width:100%;justify-content:center;padding:14px 24px;font-size:.54rem">Book Your First Appointment &#8594;</button>
+        <button class="btn btn-pu" onclick="scrollToServices()" style="width:100%;justify-content:center;padding:14px 24px;font-size:.54rem">Book Your First Appointment &#8594;</button>
       </div>
 
     </div>
@@ -2205,7 +2205,7 @@ document.getElementById('promoX').addEventListener('click',function(){
   // After transition ends, snap nav to top
   setTimeout(setNavTop, 420);
 });
-document.getElementById('promoCta').addEventListener('click',function(){ openBooking('General'); });
+document.getElementById('promoCta').addEventListener('click',function(){ scrollToServices(); });
 
 /* ── WAITLIST ── */
 var wlOverlay=document.getElementById('wlOverlay');
@@ -2254,18 +2254,46 @@ document.getElementById('bmClose').addEventListener('click', closeBooking);
 bmOverlay.addEventListener('click',function(e){ if(e.target===bmOverlay) closeBooking(); });
 
 /* ── ALL BOOK BUTTONS ── */
-var bookMap={
-  navBook:'General', mobBookBtn:'General', heroBook:'General',
-  svcCtaBtn:'General', ctaBook:'General', polBook:'General',
-  svcBtn1:'Frontal Wig Install', svcBtn2:'Closure Install', svcBtn3:'Wig Revamp',
+// Scroll to services helper
+function scrollToServices(){
+  smoothScrollTo(document.getElementById('services'), 900);
+}
+
+// Buttons that scroll to #services (not the modal)
+var scrollBtns = ['navBook','mobBookBtn','heroBook','ctaBook','polBook'];
+scrollBtns.forEach(function(id){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(id === 'mobBookBtn'){
+      document.getElementById('mobMenu').classList.remove('open');
+      document.getElementById('ham').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    scrollToServices();
+  });
+});
+
+// Deal buttons — open booking modal (specific offers)
+var dealMap = {
   dealBtn1:'Frontal Wig Install', dealBtn2:'Frontal Wig Install', dealBtn3:'General'
 };
-Object.keys(bookMap).forEach(function(id){
-  var el=document.getElementById(id);
-  if(el) el.addEventListener('click',function(e){
+Object.keys(dealMap).forEach(function(id){
+  var el = document.getElementById(id);
+  if(el) el.addEventListener('click', function(e){ e.stopPropagation(); openBooking(dealMap[id]); });
+});
+
+// Service cards still open booking modal
+var svcCardMap = {
+  svcBtn1:'Frontal Wig Install', svcBtn2:'Closure Install',
+  svcBtn3:'Wig Revamp', svcCtaBtn:'General'
+};
+Object.keys(svcCardMap).forEach(function(id){
+  var el = document.getElementById(id);
+  if(el) el.addEventListener('click', function(e){
     e.stopPropagation();
-    if(id==='mobBookBtn'){ document.getElementById('mobMenu').classList.remove('open'); document.getElementById('ham').classList.remove('open'); document.body.style.overflow=''; }
-    openBooking(bookMap[id]);
+    openBooking(svcCardMap[id]);
   });
 });
 ['svcCard1','svcCard2','svcCard3','svcCard4'].forEach(function(id,i){
