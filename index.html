@@ -639,12 +639,16 @@ nav.solid{background:rgba(6,6,10,.99)}
 .gal-slide-overlay{
   position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   opacity:0;transition:opacity .3s;background:rgba(6,6,10,.3);
+  cursor:pointer;
 }
-.gal-slide:hover .gal-slide-overlay{opacity:1}
+.gal-slide:hover .gal-slide-overlay,.gal-slide.active-slide .gal-slide-overlay{opacity:1}
+@media(max-width:759px){.gal-slide-overlay{opacity:1}}
 .gal-expand{
   font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.2em;
   color:var(--chalk);background:rgba(191,95,255,.8);padding:10px 22px;
   text-transform:uppercase;box-shadow:0 0 24px rgba(191,95,255,.5);
+  cursor:pointer;position:relative;z-index:2;
+  border:none;display:inline-block;-webkit-tap-highlight-color:transparent;
 }
 /* right glow */
 .gal-slideshow::after{
@@ -1904,22 +1908,22 @@ footer{
     <div class="gal-slideshow">
       <div class="gal-track-wrap">
         <div class="gal-track" id="galTrack">
-          <div class="gal-slide active-slide" data-src="img2.jpeg"><img src="img2.jpeg" alt="Gallery 1" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">01</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img3.jpeg"><img src="img3.jpeg" alt="Gallery 2" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">02</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img5.jpeg"><img src="img5.jpeg" alt="Gallery 3" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">03</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img8.jpeg"><img src="img8.jpeg" alt="Gallery 4" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">04</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img9.jpeg"><img src="img9.jpeg" alt="Gallery 5" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">05</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img10.jpeg"><img src="img10.jpeg" alt="Gallery 6" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">06</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img1.jpeg"><img src="img1.jpeg" alt="Gallery 7" style="object-position:top center" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">07</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img4.jpeg"><img src="img4.jpeg" alt="Gallery 8" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">08</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img6.jpeg"><img src="img6.jpeg" alt="Gallery 9" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">09</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img7.jpeg"><img src="img7.jpeg" alt="Gallery 10" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">10</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img11.png"><img src="img11.png" alt="Gallery 11" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">11</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img12.png"><img src="img12.png" alt="Gallery 12" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">12</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img13.png"><img src="img13.png" alt="Gallery 13" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">13</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img14.png"><img src="img14.png" alt="Gallery 14" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">14</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img15.png"><img src="img15.png" alt="Gallery 15" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">15</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
-          <div class="gal-slide" data-src="img16.png"><img src="img16.png" alt="Gallery 16" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">16</span></div><div class="gal-slide-overlay"><span class="gal-expand">View Photo</span></div></div>
+          <div class="gal-slide active-slide" data-src="img2.jpeg"><img src="img2.jpeg" alt="Gallery 1" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">01</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img3.jpeg"><img src="img3.jpeg" alt="Gallery 2" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">02</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img5.jpeg"><img src="img5.jpeg" alt="Gallery 3" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">03</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img8.jpeg"><img src="img8.jpeg" alt="Gallery 4" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">04</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img9.jpeg"><img src="img9.jpeg" alt="Gallery 5" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">05</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img10.jpeg"><img src="img10.jpeg" alt="Gallery 6" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">06</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img1.jpeg"><img src="img1.jpeg" alt="Gallery 7" style="object-position:top center" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">07</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img4.jpeg"><img src="img4.jpeg" alt="Gallery 8" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">08</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img6.jpeg"><img src="img6.jpeg" alt="Gallery 9" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">09</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img7.jpeg"><img src="img7.jpeg" alt="Gallery 10" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">10</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img11.png"><img src="img11.png" alt="Gallery 11" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">11</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img12.png"><img src="img12.png" alt="Gallery 12" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">12</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img13.png"><img src="img13.png" alt="Gallery 13" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">13</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img14.png"><img src="img14.png" alt="Gallery 14" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">14</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img15.png"><img src="img15.png" alt="Gallery 15" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">15</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img16.png"><img src="img16.png" alt="Gallery 16" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">16</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
         </div>
       </div>
     </div>
@@ -2222,7 +2226,6 @@ function openWaitlist(){ wlOverlay.classList.add('open'); document.body.style.ov
 function closeWaitlist(){ wlOverlay.classList.remove('open'); document.body.style.overflow=''; }
 document.getElementById('wlClose').addEventListener('click', closeWaitlist);
 wlOverlay.addEventListener('click',function(e){ if(e.target===wlOverlay) closeWaitlist(); });
-document.getElementById('wlTrigger').addEventListener('click', openWaitlist);
 document.getElementById('wlSubmit').addEventListener('click',function(){
   var name=document.getElementById('wlName').value.trim();
   var em=document.getElementById('wlEmail').value.trim();
@@ -2448,7 +2451,14 @@ function lbNavigate(dir){
 }
 lbImg.style.transition='opacity .2s,transform .2s';
 galSlides.forEach(function(slide, i){
-  slide.addEventListener('click', function(){ openLb(i); galGoTo(i); galResetAuto(); });
+  var overlay = slide.querySelector('.gal-slide-overlay');
+  var btn = slide.querySelector('.gal-expand');
+  if(overlay){
+    overlay.addEventListener('click', function(e){ e.stopPropagation(); openLb(i); galGoTo(i); galResetAuto(); });
+  }
+  if(btn){
+    btn.addEventListener('click', function(e){ e.stopPropagation(); openLb(i); galGoTo(i); galResetAuto(); });
+  }
 });
 document.getElementById('lbClose').addEventListener('click', closeLb);
 document.getElementById('lbPrev').addEventListener('click', function(e){ e.stopPropagation(); lbNavigate(-1); });
@@ -2611,5 +2621,14 @@ if(window.matchMedia('(pointer:fine)').matches){
 
 }catch(e){ console.warn('JS:',e); }
 </script>
+
+<!-- Isolated loader dismiss -->
+<script>
+setTimeout(function(){
+  var l=document.getElementById('pageLoader');
+  if(l){l.style.opacity='0';l.style.visibility='hidden';l.style.pointerEvents='none';}
+},1500);
+</script>
+
 </body>
 </html>
