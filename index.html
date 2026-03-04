@@ -486,176 +486,61 @@ nav.solid{background:rgba(6,6,10,.99)}
 .deal-expires{font-size:.48rem;letter-spacing:.16em;color:rgba(242,240,255,.6);text-transform:uppercase;font-family:'IBM Plex Mono',monospace}
 
 /* ═══════════════════════════════════════
-   GALLERY — SPLIT SLIDESHOW
+   GALLERY
 ═══════════════════════════════════════ */
 .gallery{
   background:var(--ink);
   padding:clamp(48px,10vw,100px) 0;
   overflow:hidden;
 }
-/* outer flex: title left | slideshow right */
 .gal-inner{
-  display:flex;
-  flex-direction:column;
-  gap:40px;
+  display:flex;flex-direction:column;gap:40px;
 }
 @media(min-width:760px){
-  .gal-inner{
-    flex-direction:row;
-    align-items:center;
-    gap:0;
-  }
+  .gal-inner{flex-direction:row;align-items:center;gap:0;}
 }
-
-/* LEFT — title panel */
 .gal-panel{
-  flex-shrink:0;
-  padding:0 var(--pad);
+  flex-shrink:0;padding:0 var(--pad);
   display:flex;flex-direction:column;justify-content:center;
 }
 @media(min-width:760px){
-  .gal-panel{
-    width:clamp(260px,30vw,380px);
-    padding-right:0;
-    position:sticky;top:0;
-  }
+  .gal-panel{width:clamp(260px,30vw,380px);padding-right:0;}
 }
 .gal-panel .eyebrow{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pu);font-weight:700;margin-bottom:10px;font-family:'IBM Plex Mono',monospace}
 .gal-panel .eyebrow::before{content:'// '}
 .gal-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:400;line-height:.9;letter-spacing:.03em;text-transform:uppercase;margin-bottom:18px}
 .gal-h2 em{font-style:normal;color:var(--pu);text-shadow:0 0 9px rgba(191,95,255,.22);animation:purpleFlickerBig 13s ease-in-out infinite}
 .gal-sub{font-size:.7rem;color:rgba(242,240,255,.65);line-height:1.85;font-family:'IBM Plex Mono',monospace;margin-bottom:28px;max-width:260px}
-/* slide counter */
-.gal-counter{
-  font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;
-  color:rgba(242,240,255,.3);margin-bottom:16px;
-}
+.gal-counter{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;color:rgba(242,240,255,.3);margin-bottom:16px;}
 .gal-counter em{font-style:normal;color:var(--pu);font-size:1.4rem}
-/* nav arrows */
-.gal-nav{display:flex;gap:10px}
-.gal-arrow{
-  width:44px;height:44px;border:1px solid rgba(191,95,255,.3);
-  background:transparent;color:var(--chalk);font-size:1.1rem;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all .25s;-webkit-tap-highlight-color:transparent;
-  font-family:'IBM Plex Mono',monospace;
-}
+.gal-nav{display:flex;gap:10px;}
+.gal-arrow{width:44px;height:44px;border:1px solid rgba(191,95,255,.3);background:transparent;color:var(--chalk);font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;-webkit-tap-highlight-color:transparent;font-family:'IBM Plex Mono',monospace;}
 .gal-arrow:hover{background:var(--pu);border-color:var(--pu);color:var(--ink);box-shadow:0 0 20px rgba(191,95,255,.5)}
-/* Hide counter/arrows/dots in panel on mobile — shown below slideshow instead */
-@media(max-width:759px){
-  .gal-counter, .gal-nav, .gal-dots { display:none; }
-}
-/* Mobile controls bar — below the slideshow */
-.gal-mobile-controls{
-  display:none;
-  align-items:center;
-  gap:12px;
-  padding:16px var(--pad) 0;
-}
-@media(max-width:759px){ .gal-mobile-controls{ display:flex; } }
-.gal-mob-counter{
-  font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;
-  color:rgba(242,240,255,.3);margin-right:4px;white-space:nowrap;
-}
+@media(max-width:759px){.gal-counter,.gal-nav,.gal-dots{display:none}}
+.gal-mobile-controls{display:none;align-items:center;gap:12px;padding:16px var(--pad) 0;}
+@media(max-width:759px){.gal-mobile-controls{display:flex}}
+.gal-mob-counter{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;color:rgba(242,240,255,.3);margin-right:4px;white-space:nowrap;}
 .gal-mob-counter em{font-style:normal;color:var(--pu);font-size:1.3rem}
-.gal-mob-dots{display:flex;gap:6px;flex-wrap:wrap;flex:1}
-/* shared dot style for both desktop panel and mobile bar */
-.gal-dot{width:6px;height:6px;background:rgba(191,95,255,.25);transition:all .3s;cursor:pointer;flex-shrink:0}
+.gal-dot{width:6px;height:6px;background:rgba(191,95,255,.25);transition:all .3s;cursor:pointer;flex-shrink:0;}
 .gal-dot.active{background:var(--pu);width:22px;box-shadow:0 0 8px rgba(191,95,255,.6)}
-
-/* RIGHT — slideshow viewport */
-.gal-slideshow{
-  flex:1;
-  overflow:hidden;
-  position:relative;
-  /* glow behind slides */
-}
-.gal-slideshow::before{
-  content:'';
-  position:absolute;left:-80px;top:50%;transform:translateY(-50%);
-  width:200px;height:80%;
-  background:radial-gradient(ellipse at center,rgba(191,95,255,.18) 0%,transparent 70%);
-  pointer-events:none;z-index:0;
-}
-@media(max-width:759px){
-  .gal-slideshow{padding:0 var(--pad)}
-}
-.gal-track-wrap{
-  overflow:hidden;
-  position:relative;z-index:1;
-}
-.gal-track{
-  display:flex;
-  gap:12px;
-  transition:transform .55s cubic-bezier(.4,0,.2,1);
-  will-change:transform;
-}
-/* each slide shows 1.2 cards to hint at next */
-.gal-slide{
-  flex:0 0 calc(100% - 12px);
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
-  border:1px solid rgba(191,95,255,.12);
-  transition:border-color .3s;
-}
-@media(min-width:500px){
-  .gal-slide{flex:0 0 calc(70% - 12px)}
-}
-@media(min-width:900px){
-  .gal-slide{flex:0 0 calc(55% - 12px)}
-}
+.gal-mob-dots{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.gal-slideshow{flex:1;overflow:hidden;position:relative;}
+@media(max-width:759px){.gal-slideshow{padding:0 var(--pad)}}
+.gal-track-wrap{overflow:hidden;position:relative;z-index:1;}
+.gal-track{display:flex;gap:12px;transition:transform .55s cubic-bezier(.4,0,.2,1);}
+.gal-slide{flex:0 0 calc(100% - 12px);position:relative;overflow:hidden;border:1px solid rgba(191,95,255,.12);transition:border-color .3s;}
+@media(min-width:500px){.gal-slide{flex:0 0 calc(70% - 12px)}}
+@media(min-width:900px){.gal-slide{flex:0 0 calc(55% - 12px)}}
 .gal-slide:hover{border-color:rgba(191,95,255,.5)}
-/* glow ring on active slide */
-.gal-slide.active-slide{
-  border-color:rgba(191,95,255,.4);
-  box-shadow:0 0 40px rgba(191,95,255,.18),0 0 80px rgba(191,95,255,.08);
-}
-.gal-slide img{
-  width:100%;height:520px;
-  object-fit:cover;object-position:top;
-  transition:transform .6s cubic-bezier(.4,0,.2,1),filter .4s;
-  filter:saturate(.7) brightness(.9);
-  display:block;
-}
+.gal-slide.active-slide{border-color:rgba(191,95,255,.4);box-shadow:0 0 40px rgba(191,95,255,.18);}
+.gal-slide img{width:100%;height:520px;object-fit:cover;object-position:top;display:block;transition:transform .6s,filter .4s;filter:saturate(.7) brightness(.9);}
 @media(min-width:760px){.gal-slide img{height:580px}}
 .gal-slide:hover img,.gal-slide.active-slide img{transform:scale(1.04);filter:saturate(1) brightness(1)}
-.gal-slide-veil{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(6,6,10,.7) 0%,transparent 50%);
-  display:flex;align-items:flex-end;padding:20px;
-  pointer-events:none;
-}
-.gal-slide-num{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:4rem;color:rgba(191,95,255,.15);line-height:1;letter-spacing:.06em;
-}
-/* click to expand overlay */
-.gal-slide-overlay{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  opacity:0;transition:opacity .3s;background:rgba(6,6,10,.3);
-  pointer-events:none;
-}
-.gal-expand{
-  pointer-events:all;cursor:pointer;
-}
+.gal-slide-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,10,.7) 0%,transparent 50%);display:flex;align-items:flex-end;padding:20px;pointer-events:none;}
+.gal-slide-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(191,95,255,.15);line-height:1;letter-spacing:.06em;}
+.gal-slide-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;background:rgba(6,6,10,.3);pointer-events:none;}
 .gal-slide:hover .gal-slide-overlay{opacity:1}
-.gal-expand{
-  font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.2em;
-  color:var(--chalk);background:rgba(191,95,255,.8);padding:10px 22px;
-  text-transform:uppercase;box-shadow:0 0 24px rgba(191,95,255,.5);
-}
-/* right glow */
-.gal-slideshow::after{
-  content:'';
-  position:absolute;right:0;top:0;bottom:0;width:80px;
-  background:linear-gradient(to left,rgba(6,6,10,.6),transparent);
-  pointer-events:none;z-index:2;
-}
-@media(max-width:759px){
-  .gal-slideshow::after{display:none}
-}
+.gal-expand{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.2em;color:var(--chalk);background:rgba(191,95,255,.8);padding:10px 22px;text-transform:uppercase;box-shadow:0 0 24px rgba(191,95,255,.5);border:none;cursor:pointer;pointer-events:all;}
 
 /* ═══════════════════════════════════════
    CTA BAND
@@ -1371,8 +1256,8 @@ footer{
 
 
 ═══════════════════════════════════════ */
-.lightbox{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s;padding:20px}
-.lightbox.open{opacity:1;pointer-events:all}
+.lightbox{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:10000;background:rgba(0,0,0,.96);align-items:center;justify-content:center;padding:20px}
+.lightbox.open{display:flex}
 .lb-img{max-width:min(88vw,560px);max-height:86vh;object-fit:contain;transform:scale(.92);transition:transform .4s cubic-bezier(.4,0,.2,1);border:1px solid rgba(191,95,255,.2)}
 .lightbox.open .lb-img{transform:scale(1)}
 .lb-close{position:absolute;top:16px;right:20px;font-size:1.4rem;color:rgba(242,240,255,.42);cursor:pointer;line-height:1;transition:color .25s;background:none;border:none;-webkit-tap-highlight-color:transparent}
@@ -1492,13 +1377,7 @@ footer{
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lb">
-  <button class="lb-close" id="lbClose">&#x2715;</button>
-  <button class="lb-prev" id="lbPrev">&#8249;</button>
-  <img class="lb-img" id="lbImg" src="" alt="">
-  <button class="lb-next" id="lbNext">&#8250;</button>
-</div>
+<!-- LIGHTBOX injected via JS -->
 
 <!-- BOOKING MODAL -->
 <div class="bm-overlay" id="bmOverlay">
@@ -1883,11 +1762,9 @@ footer{
   </div>
 </section>
 
-<!-- ═══ GALLERY — SPLIT SLIDESHOW ═══ -->
+<!-- ═══ GALLERY ═══ -->
 <section class="gallery" id="gallery">
   <div class="gal-inner">
-
-    <!-- LEFT: title + controls -->
     <div class="gal-panel">
       <div class="eyebrow">Our Work</div>
       <h2 class="gal-h2">The<br><em>Gallery</em></h2>
@@ -1899,41 +1776,35 @@ footer{
       </div>
       <div class="gal-dots" id="galDots"></div>
     </div>
-
-    <!-- RIGHT: sliding images -->
     <div class="gal-slideshow">
       <div class="gal-track-wrap">
         <div class="gal-track" id="galTrack">
-          <div class="gal-slide active-slide" data-src="img2.jpeg"><img src="img2.jpeg" alt="Gallery 1" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">01</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(0)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img3.jpeg"><img src="img3.jpeg" alt="Gallery 2" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">02</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(1)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img5.jpeg"><img src="img5.jpeg" alt="Gallery 3" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">03</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(2)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img8.jpeg"><img src="img8.jpeg" alt="Gallery 4" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">04</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(3)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img9.jpeg"><img src="img9.jpeg" alt="Gallery 5" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">05</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(4)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img10.jpeg"><img src="img10.jpeg" alt="Gallery 6" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">06</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(5)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img1.jpeg"><img src="img1.jpeg" alt="Gallery 7" style="object-position:top center" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">07</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(6)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img4.jpeg"><img src="img4.jpeg" alt="Gallery 8" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">08</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(7)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img6.jpeg"><img src="img6.jpeg" alt="Gallery 9" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">09</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(8)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img7.jpeg"><img src="img7.jpeg" alt="Gallery 10" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">10</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(9)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img11.png"><img src="img11.png" alt="Gallery 11" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">11</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(10)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img12.png"><img src="img12.png" alt="Gallery 12" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">12</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(11)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img13.png"><img src="img13.png" alt="Gallery 13" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">13</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(12)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img14.png"><img src="img14.png" alt="Gallery 14" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">14</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(13)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img15.png"><img src="img15.png" alt="Gallery 15" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">15</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(14)">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img16.png"><img src="img16.png" alt="Gallery 16" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">16</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(15)">View Photo</button></div></div>
+          <div class="gal-slide active-slide" data-src="img2.jpeg"><img src="img2.jpeg" alt="Gallery 1" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">01</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(0)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img3.jpeg"><img src="img3.jpeg" alt="Gallery 2" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">02</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(1)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img5.jpeg"><img src="img5.jpeg" alt="Gallery 3" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">03</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(2)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img8.jpeg"><img src="img8.jpeg" alt="Gallery 4" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">04</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(3)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img9.jpeg"><img src="img9.jpeg" alt="Gallery 5" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">05</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(4)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img10.jpeg"><img src="img10.jpeg" alt="Gallery 6" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">06</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(5)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img1.jpeg"><img src="img1.jpeg" alt="Gallery 7" style="object-position:top center" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">07</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(6)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img4.jpeg"><img src="img4.jpeg" alt="Gallery 8" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">08</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(7)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img6.jpeg"><img src="img6.jpeg" alt="Gallery 9" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">09</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(8)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img7.jpeg"><img src="img7.jpeg" alt="Gallery 10" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">10</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(9)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img11.png"><img src="img11.png" alt="Gallery 11" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">11</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(10)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img12.png"><img src="img12.png" alt="Gallery 12" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">12</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(11)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img13.png"><img src="img13.png" alt="Gallery 13" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">13</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(12)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img14.png"><img src="img14.png" alt="Gallery 14" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">14</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(13)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img15.png"><img src="img15.png" alt="Gallery 15" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">15</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(14)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img16.png"><img src="img16.png" alt="Gallery 16" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">16</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="openLb(15)">View Photo</button></div></div>
         </div>
       </div>
     </div>
-
   </div>
-
-  <!-- Mobile controls: counter + arrows + dots — sits below photos -->
   <div class="gal-mobile-controls">
     <div class="gal-mob-counter">Photo <em id="galCurMob">01</em></div>
     <button class="gal-arrow" id="galPrevMob">&#8592;</button>
     <button class="gal-arrow" id="galNextMob">&#8594;</button>
     <div class="gal-mob-dots" id="galDotsMob"></div>
   </div>
-
 </section>
 
 <!-- ═══ CTA BAND ═══ -->
@@ -2366,7 +2237,7 @@ track.addEventListener('mouseenter',stopAuto);
 track.addEventListener('mouseleave',startAuto);
 startAuto();
 
-/* ── GALLERY SLIDESHOW ── */
+/* ── GALLERY SLIDESHOW + LIGHTBOX ── */
 var galTrack = document.getElementById('galTrack');
 var galSlides = Array.from(galTrack.querySelectorAll('.gal-slide'));
 var galDotsEl = document.getElementById('galDots');
@@ -2377,7 +2248,6 @@ var galCur = 0;
 var galTotal = galSlides.length;
 var galAutoTimer = null;
 
-// build dots in BOTH containers
 [galDotsEl, galDotsMobEl].forEach(function(container){
   galSlides.forEach(function(_, i){
     var d = document.createElement('span');
@@ -2393,11 +2263,9 @@ function galGoTo(n){
   galSlides[galCur].classList.add('active-slide');
   var slideW = galSlides[0].offsetWidth + 12;
   galTrack.style.transform = 'translateX(-' + (galCur * slideW) + 'px)';
-  // update both counters
   var label = String(galCur + 1).padStart(2, '0');
   galCurEl.textContent = label;
   galCurMobEl.textContent = label;
-  // update both dot sets
   [galDotsEl, galDotsMobEl].forEach(function(container){
     container.querySelectorAll('.gal-dot').forEach(function(d, i){
       d.classList.toggle('active', i === galCur);
@@ -2405,10 +2273,8 @@ function galGoTo(n){
   });
 }
 
-// desktop panel arrows
 document.getElementById('galPrev').addEventListener('click', function(){ galGoTo(galCur - 1); galResetAuto(); });
 document.getElementById('galNext').addEventListener('click', function(){ galGoTo(galCur + 1); galResetAuto(); });
-// mobile bottom arrows
 document.getElementById('galPrevMob').addEventListener('click', function(){ galGoTo(galCur - 1); galResetAuto(); });
 document.getElementById('galNextMob').addEventListener('click', function(){ galGoTo(galCur + 1); galResetAuto(); });
 
@@ -2418,7 +2284,6 @@ function galResetAuto(){ galStopAuto(); galStartAuto(); }
 galStartAuto();
 window.addEventListener('resize', function(){ galGoTo(galCur); });
 
-// touch swipe
 var galTouchStart = 0;
 galTrack.addEventListener('touchstart', function(e){ galTouchStart = e.touches[0].clientX; galStopAuto(); }, {passive:true});
 galTrack.addEventListener('touchend', function(e){
@@ -2427,43 +2292,54 @@ galTrack.addEventListener('touchend', function(e){
   galResetAuto();
 });
 
-// keyboard arrows
-document.addEventListener('keydown', function(e){
-  if(lb.classList.contains('open')) return;
-  if(e.key === 'ArrowLeft') { galGoTo(galCur - 1); galResetAuto(); }
-  if(e.key === 'ArrowRight') { galGoTo(galCur + 1); galResetAuto(); }
-});
-
-
-
 /* ── GALLERY LIGHTBOX ── */
-var lb = document.getElementById('lb');
-var lbImg = document.getElementById('lbImg');
+var galSrcs = galSlides.map(function(s){ return s.dataset.src; });
 var lbIndex = 0;
+var lb = document.createElement('div');
+lb.style.cssText = 'display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:99999;align-items:center;justify-content:center;';
+var lbImg = document.createElement('img');
+lbImg.style.cssText = 'max-width:90vw;max-height:90vh;object-fit:contain;border:1px solid rgba(191,95,255,.2);';
+var lbClose = document.createElement('button');
+lbClose.innerHTML = '&#x2715;';
+lbClose.style.cssText = 'position:absolute;top:20px;right:24px;background:none;border:none;color:rgba(255,255,255,.6);font-size:1.8rem;cursor:pointer;line-height:1;';
+var lbPrev = document.createElement('button');
+lbPrev.innerHTML = '&#8249;';
+lbPrev.style.cssText = 'position:absolute;left:16px;top:50%;margin-top:-24px;width:48px;height:48px;background:#BF5FFF;border:none;color:#06060A;font-size:2rem;font-weight:bold;cursor:pointer;line-height:48px;text-align:center;box-shadow:0 0 24px rgba(191,95,255,.8);z-index:2;';
+var lbNext = document.createElement('button');
+lbNext.innerHTML = '&#8250;';
+lbNext.style.cssText = 'position:absolute;right:16px;top:50%;margin-top:-24px;width:48px;height:48px;background:#BF5FFF;border:none;color:#06060A;font-size:2rem;font-weight:bold;cursor:pointer;line-height:48px;text-align:center;box-shadow:0 0 24px rgba(191,95,255,.8);z-index:2;';
+lb.appendChild(lbClose); lb.appendChild(lbPrev); lb.appendChild(lbImg); lb.appendChild(lbNext);
+document.body.appendChild(lb);
+console.log('Lightbox ready —', galTotal, 'slides');
+
 function openLb(idx){
   lbIndex = idx;
-  lbImg.src = galSlides[lbIndex].dataset.src;
-  lb.classList.add('open');
+  lbImg.src = galSrcs[lbIndex];
+  lb.style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  galStopAuto();
 }
 function closeLb(){
-  lb.classList.remove('open');
+  lb.style.display = 'none';
   document.body.style.overflow = '';
+  galStartAuto();
 }
 function lbNavigate(dir){
   lbIndex = (lbIndex + dir + galTotal) % galTotal;
-  lbImg.src = galSlides[lbIndex].dataset.src;
+  lbImg.src = galSrcs[lbIndex];
 }
-document.getElementById('lbClose').addEventListener('click', closeLb);
-document.getElementById('lbPrev').addEventListener('click', function(e){ e.stopPropagation(); lbNavigate(-1); });
-document.getElementById('lbNext').addEventListener('click', function(e){ e.stopPropagation(); lbNavigate(1); });
+lbClose.addEventListener('click', closeLb);
+lbPrev.addEventListener('click', function(e){ e.stopPropagation(); lbNavigate(-1); });
+lbNext.addEventListener('click', function(e){ e.stopPropagation(); lbNavigate(1); });
 lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
 document.addEventListener('keydown', function(e){
-  if(!lb.classList.contains('open')) return;
+  if(lb.style.display === 'none') return;
   if(e.key==='ArrowLeft') lbNavigate(-1);
   if(e.key==='ArrowRight') lbNavigate(1);
   if(e.key==='Escape') closeLb();
 });
+
+
 /* ── WAITLIST BANNER INLINE SUBMIT ── */
 document.getElementById('wlTrigger').addEventListener('click', function(){
   var name = document.getElementById('wlBannerName').value.trim();
