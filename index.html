@@ -2223,7 +2223,8 @@ document.getElementById('wlSubmit').addEventListener('click',function(){
   if(!name){ document.getElementById('wlName').style.borderColor='var(--pu-dk)'; return; }
   if(!em||!em.includes('@')){ document.getElementById('wlEmail').style.borderColor='var(--pu-dk)'; return; }
   var zapierURL='https://hooks.zapier.com/hooks/catch/26687679/u0pg4m2/';
-  fetch(zapierURL,{method:'POST',body:JSON.stringify({name:name,email:em,phone:phone,service:service,date:date}),headers:{'Content-Type':'application/json'}})
+  var params=new URLSearchParams({name:name,email:em,phone:phone,service:service,date:date});
+  fetch(zapierURL,{method:'POST',body:params})
     .then(function(res){ console.log('Zapier waitlist modal:', res.status); })
     .catch(function(err){ console.warn('Zapier error:', err); });
   document.querySelector('.wl-panel').innerHTML='<div style="text-align:center;padding:28px 18px"><div style="font-family:Bebas Neue,sans-serif;font-size:3.8rem;color:var(--pu);text-shadow:0 0 16px rgba(191,95,255,.4);margin-bottom:14px">&#10003;</div><div style="font-family:Bebas Neue,sans-serif;font-size:2.2rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px">You\'re on the waitlist!</div><p style="font-size:.72rem;color:rgba(242,240,255,.44);line-height:1.85;max-width:290px;margin:0 auto;font-family:IBM Plex Mono,monospace">Hi <strong style="color:var(--pu-lt)">'+name+'</strong> — we\'ll reach out to <strong style="color:var(--pu-lt)">'+em+'</strong> the moment a spot opens.</p><button onclick="closeWaitlist()" style="margin-top:24px;display:inline-flex;padding:11px 26px;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;background:var(--pu);color:var(--ink);border:none;cursor:pointer;font-family:IBM Plex Mono,monospace;">Close</button></div>';
@@ -2459,7 +2460,7 @@ document.getElementById('wlTrigger').addEventListener('click', function(){
   if(!name){ document.getElementById('wlBannerName').style.borderColor='var(--pu)'; document.getElementById('wlBannerName').focus(); return; }
   if(!em||!em.includes('@')){ document.getElementById('wlBannerEmail').style.borderColor='var(--pu)'; document.getElementById('wlBannerEmail').focus(); return; }
   var date = new Date().toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
-  fetch('https://hooks.zapier.com/hooks/catch/26687679/u0pg4m2/',{method:'POST',body:JSON.stringify({name:name,email:em,phone:phone,date:date}),headers:{'Content-Type':'application/json'}})
+  fetch('https://hooks.zapier.com/hooks/catch/26687679/u0pg4m2/',{method:'POST',body:new URLSearchParams({name:name,email:em,phone:phone,date:date})})
     .then(function(r){ console.log('Zapier waitlist banner:', r.status); }).catch(function(e){ console.warn(e); });
   // success state
   document.querySelector('.wl-strip-right').innerHTML = '<div style="padding:20px 0"><div style="font-family:Bebas Neue,sans-serif;font-size:3rem;color:var(--pu);text-shadow:0 0 20px rgba(191,95,255,.5);line-height:1;margin-bottom:10px">&#10003; You\'re on the list!</div><p style="font-size:.72rem;color:rgba(242,240,255,.65);line-height:1.85;font-family:IBM Plex Mono,monospace">We\'ll text or email <strong style="color:var(--pu-lt)">'+name+'</strong> the moment a spot opens up.</p></div>';
