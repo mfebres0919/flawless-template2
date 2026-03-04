@@ -639,16 +639,16 @@ nav.solid{background:rgba(6,6,10,.99)}
 .gal-slide-overlay{
   position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   opacity:0;transition:opacity .3s;background:rgba(6,6,10,.3);
-  cursor:pointer;
+  pointer-events:none;
 }
-.gal-slide:hover .gal-slide-overlay,.gal-slide.active-slide .gal-slide-overlay{opacity:1}
-@media(max-width:759px){.gal-slide-overlay{opacity:1}}
+.gal-expand{
+  pointer-events:all;cursor:pointer;
+}
+.gal-slide:hover .gal-slide-overlay{opacity:1}
 .gal-expand{
   font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.2em;
   color:var(--chalk);background:rgba(191,95,255,.8);padding:10px 22px;
   text-transform:uppercase;box-shadow:0 0 24px rgba(191,95,255,.5);
-  cursor:pointer;position:relative;z-index:2;
-  border:none;display:inline-block;-webkit-tap-highlight-color:transparent;
 }
 /* right glow */
 .gal-slideshow::after{
@@ -1375,7 +1375,7 @@ footer{
 
 
 ═══════════════════════════════════════ */
-.lightbox{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s;padding:20px}
+.lightbox{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s;padding:20px}
 .lightbox.open{opacity:1;pointer-events:all}
 .lb-img{max-width:min(88vw,560px);max-height:86vh;object-fit:contain;transform:scale(.92);transition:transform .4s cubic-bezier(.4,0,.2,1);border:1px solid rgba(191,95,255,.2)}
 .lightbox.open .lb-img{transform:scale(1)}
@@ -1908,22 +1908,22 @@ footer{
     <div class="gal-slideshow">
       <div class="gal-track-wrap">
         <div class="gal-track" id="galTrack">
-          <div class="gal-slide active-slide" data-src="img2.jpeg"><img src="img2.jpeg" alt="Gallery 1" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">01</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img3.jpeg"><img src="img3.jpeg" alt="Gallery 2" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">02</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img5.jpeg"><img src="img5.jpeg" alt="Gallery 3" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">03</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img8.jpeg"><img src="img8.jpeg" alt="Gallery 4" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">04</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img9.jpeg"><img src="img9.jpeg" alt="Gallery 5" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">05</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img10.jpeg"><img src="img10.jpeg" alt="Gallery 6" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">06</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img1.jpeg"><img src="img1.jpeg" alt="Gallery 7" style="object-position:top center" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">07</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img4.jpeg"><img src="img4.jpeg" alt="Gallery 8" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">08</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img6.jpeg"><img src="img6.jpeg" alt="Gallery 9" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">09</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img7.jpeg"><img src="img7.jpeg" alt="Gallery 10" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">10</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img11.png"><img src="img11.png" alt="Gallery 11" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">11</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img12.png"><img src="img12.png" alt="Gallery 12" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">12</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img13.png"><img src="img13.png" alt="Gallery 13" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">13</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img14.png"><img src="img14.png" alt="Gallery 14" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">14</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img15.png"><img src="img15.png" alt="Gallery 15" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">15</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
-          <div class="gal-slide" data-src="img16.png"><img src="img16.png" alt="Gallery 16" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">16</span></div><div class="gal-slide-overlay"><button class="gal-expand">View Photo</button></div></div>
+          <div class="gal-slide active-slide" data-src="img2.jpeg"><img src="img2.jpeg" alt="Gallery 1" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">01</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(0)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img3.jpeg"><img src="img3.jpeg" alt="Gallery 2" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">02</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(1)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img5.jpeg"><img src="img5.jpeg" alt="Gallery 3" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">03</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(2)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img8.jpeg"><img src="img8.jpeg" alt="Gallery 4" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">04</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(3)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img9.jpeg"><img src="img9.jpeg" alt="Gallery 5" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">05</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(4)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img10.jpeg"><img src="img10.jpeg" alt="Gallery 6" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">06</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(5)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img1.jpeg"><img src="img1.jpeg" alt="Gallery 7" style="object-position:top center" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">07</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(6)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img4.jpeg"><img src="img4.jpeg" alt="Gallery 8" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">08</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(7)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img6.jpeg"><img src="img6.jpeg" alt="Gallery 9" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">09</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(8)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img7.jpeg"><img src="img7.jpeg" alt="Gallery 10" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">10</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(9)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img11.png"><img src="img11.png" alt="Gallery 11" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">11</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(10)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img12.png"><img src="img12.png" alt="Gallery 12" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">12</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(11)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img13.png"><img src="img13.png" alt="Gallery 13" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">13</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(12)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img14.png"><img src="img14.png" alt="Gallery 14" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">14</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(13)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img15.png"><img src="img15.png" alt="Gallery 15" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">15</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(14)">View Photo</button></div></div>
+          <div class="gal-slide" data-src="img16.png"><img src="img16.png" alt="Gallery 16" loading="lazy"><div class="gal-slide-veil"><span class="gal-slide-num">16</span></div><div class="gal-slide-overlay"><button class="gal-expand" onclick="event.stopPropagation();openLb(15)">View Photo</button></div></div>
         </div>
       </div>
     </div>
@@ -2431,14 +2431,43 @@ galTrack.addEventListener('touchend', function(e){
   galResetAuto();
 });
 
-// keyboard arrows for gallery (lightbox-aware check moved to standalone script below)
+// keyboard arrows
 document.addEventListener('keydown', function(e){
-  var lbEl = document.getElementById('lb');
-  if(lbEl && lbEl.classList.contains('open')) return;
+  if(lb.classList.contains('open')) return;
   if(e.key === 'ArrowLeft') { galGoTo(galCur - 1); galResetAuto(); }
   if(e.key === 'ArrowRight') { galGoTo(galCur + 1); galResetAuto(); }
 });
 
+
+
+/* ── GALLERY LIGHTBOX ── */
+var lb = document.getElementById('lb');
+var lbImg = document.getElementById('lbImg');
+var lbIndex = 0;
+function openLb(idx){
+  lbIndex = idx;
+  lbImg.src = galSlides[lbIndex].dataset.src;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb(){
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbNavigate(dir){
+  lbIndex = (lbIndex + dir + galTotal) % galTotal;
+  lbImg.src = galSlides[lbIndex].dataset.src;
+}
+document.getElementById('lbClose').addEventListener('click', closeLb);
+document.getElementById('lbPrev').addEventListener('click', function(e){ e.stopPropagation(); lbNavigate(-1); });
+document.getElementById('lbNext').addEventListener('click', function(e){ e.stopPropagation(); lbNavigate(1); });
+lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
+document.addEventListener('keydown', function(e){
+  if(!lb.classList.contains('open')) return;
+  if(e.key==='ArrowLeft') lbNavigate(-1);
+  if(e.key==='ArrowRight') lbNavigate(1);
+  if(e.key==='Escape') closeLb();
+});
 /* ── WAITLIST BANNER INLINE SUBMIT ── */
 document.getElementById('wlTrigger').addEventListener('click', function(){
   var name = document.getElementById('wlBannerName').value.trim();
@@ -2598,87 +2627,6 @@ setTimeout(function(){
 },1500);
 </script>
 
-<!-- ═══ STANDALONE GALLERY LIGHTBOX ═══ -->
-<!-- Completely isolated from the main try/catch so no upstream error can kill it -->
-<script>
-(function(){
-  var lb = document.getElementById('lb');
-  var lbImg = document.getElementById('lbImg');
-  var lbClose = document.getElementById('lbClose');
-  var lbPrev = document.getElementById('lbPrev');
-  var lbNext = document.getElementById('lbNext');
-  var galTrack = document.getElementById('galTrack');
-
-  if(!lb || !lbImg || !galTrack){
-    console.error('Lightbox: missing DOM elements', {lb:!!lb, lbImg:!!lbImg, galTrack:!!galTrack});
-    return;
-  }
-
-  var slides = Array.from(galTrack.querySelectorAll('.gal-slide'));
-  var total = slides.length;
-  var lbIndex = 0;
-
-  lbImg.style.transition = 'opacity .2s, transform .2s';
-
-  // ── Global functions so inline onclick can also use them ──
-  window.openLb = function(idx){
-    lbIndex = idx;
-    lbImg.src = slides[lbIndex].getAttribute('data-src');
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
-
-  window.closeLb = function(){
-    lb.classList.remove('open');
-    document.body.style.overflow = '';
-  };
-
-  function lbNavigate(dir){
-    lbIndex = (lbIndex + dir + total) % total;
-    lbImg.style.opacity = '0';
-    lbImg.style.transform = 'scale(.92)';
-    setTimeout(function(){
-      lbImg.src = slides[lbIndex].getAttribute('data-src');
-      lbImg.style.opacity = '1';
-      lbImg.style.transform = 'scale(1)';
-    }, 150);
-  }
-
-  // ── Attach click handlers to every slide's overlay & button ──
-  slides.forEach(function(slide, i){
-    var overlay = slide.querySelector('.gal-slide-overlay');
-    var btn = slide.querySelector('.gal-expand');
-
-    function handleClick(e){
-      e.preventDefault();
-      e.stopPropagation();
-      window.openLb(i);
-      // Sync the gallery carousel if galGoTo exists (from main script)
-      if(typeof galGoTo === 'function') galGoTo(i);
-      if(typeof galResetAuto === 'function') galResetAuto();
-    }
-
-    if(overlay) overlay.addEventListener('click', handleClick);
-    if(btn) btn.addEventListener('click', handleClick);
-  });
-
-  // ── Lightbox chrome controls ──
-  if(lbClose) lbClose.addEventListener('click', function(){ window.closeLb(); });
-  if(lbPrev) lbPrev.addEventListener('click', function(e){ e.stopPropagation(); lbNavigate(-1); });
-  if(lbNext) lbNext.addEventListener('click', function(e){ e.stopPropagation(); lbNavigate(1); });
-  lb.addEventListener('click', function(e){ if(e.target === lb) window.closeLb(); });
-
-  // ── Keyboard navigation ──
-  document.addEventListener('keydown', function(e){
-    if(!lb.classList.contains('open')) return;
-    if(e.key === 'ArrowLeft') lbNavigate(-1);
-    if(e.key === 'ArrowRight') lbNavigate(1);
-    if(e.key === 'Escape') window.closeLb();
-  });
-
-  console.log('Lightbox: initialized OK —', total, 'slides');
-})();
-</script>
 
 </body>
 </html>
