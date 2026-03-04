@@ -2052,7 +2052,7 @@ footer{
     <h2 class="contact-h2">Have a<br><em>Question?</em></h2>
     <p class="contact-desc">Fill out the form and we'll get back to you as soon as possible. No booking requests here — use the Book Now button for appointments.</p>
     <div class="contact-info">
-      <div class="c-row"><div class="c-ico">&#9993;</div>flawlesswigstudio@gmail.com</div>
+      <div class="c-row"><div class="c-ico">&#9993;</div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="492f25283e252c3a3a3e202e3a3d3c2d2026092e24282025672a2624">[email&#160;protected]</a></div>
       <div class="c-row"><div class="c-ico">&#9742;</div>(877) 297-5454</div>
       <div class="c-row"><div class="c-ico">&#9679;</div>6391 Elgin Celina, Delaware</div>
     </div>
@@ -2145,7 +2145,7 @@ footer{
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 try {
 
 /* ── LOADER ── */
@@ -2222,13 +2222,10 @@ document.getElementById('wlSubmit').addEventListener('click',function(){
   var date=new Date().toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
   if(!name){ document.getElementById('wlName').style.borderColor='var(--pu-dk)'; return; }
   if(!em||!em.includes('@')){ document.getElementById('wlEmail').style.borderColor='var(--pu-dk)'; return; }
-  var formspreeURL='https://formspree.io/f/mkovapzo';
-  var formData=new FormData();
-  formData.append('name', name); formData.append('email', em);
-  formData.append('phone', phone); formData.append('service', service); formData.append('date', date);
-  fetch(formspreeURL,{method:'POST',body:formData,headers:{'Accept':'application/json'}})
-    .then(function(res){ console.log('Formspree:', res.status); })
-    .catch(function(err){ console.warn('Formspree error:', err); });
+  var zapierURL='https://hooks.zapier.com/hooks/catch/26687679/u0pg4m2/';
+  fetch(zapierURL,{method:'POST',body:JSON.stringify({name:name,email:em,phone:phone,service:service,date:date}),headers:{'Content-Type':'application/json'}})
+    .then(function(res){ console.log('Zapier waitlist modal:', res.status); })
+    .catch(function(err){ console.warn('Zapier error:', err); });
   document.querySelector('.wl-panel').innerHTML='<div style="text-align:center;padding:28px 18px"><div style="font-family:Bebas Neue,sans-serif;font-size:3.8rem;color:var(--pu);text-shadow:0 0 16px rgba(191,95,255,.4);margin-bottom:14px">&#10003;</div><div style="font-family:Bebas Neue,sans-serif;font-size:2.2rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px">You\'re on the waitlist!</div><p style="font-size:.72rem;color:rgba(242,240,255,.44);line-height:1.85;max-width:290px;margin:0 auto;font-family:IBM Plex Mono,monospace">Hi <strong style="color:var(--pu-lt)">'+name+'</strong> — we\'ll reach out to <strong style="color:var(--pu-lt)">'+em+'</strong> the moment a spot opens.</p><button onclick="closeWaitlist()" style="margin-top:24px;display:inline-flex;padding:11px 26px;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;background:var(--pu);color:var(--ink);border:none;cursor:pointer;font-family:IBM Plex Mono,monospace;">Close</button></div>';
 });
 
@@ -2462,11 +2459,8 @@ document.getElementById('wlTrigger').addEventListener('click', function(){
   if(!name){ document.getElementById('wlBannerName').style.borderColor='var(--pu)'; document.getElementById('wlBannerName').focus(); return; }
   if(!em||!em.includes('@')){ document.getElementById('wlBannerEmail').style.borderColor='var(--pu)'; document.getElementById('wlBannerEmail').focus(); return; }
   var date = new Date().toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
-  var formData = new FormData();
-  formData.append('name', name); formData.append('email', em);
-  formData.append('phone', phone); formData.append('date', date);
-  fetch('https://formspree.io/f/mkovapzo',{method:'POST',body:formData,headers:{'Accept':'application/json'}})
-    .then(function(r){ console.log('WL banner:', r.status); }).catch(function(e){ console.warn(e); });
+  fetch('https://hooks.zapier.com/hooks/catch/26687679/u0pg4m2/',{method:'POST',body:JSON.stringify({name:name,email:em,phone:phone,date:date}),headers:{'Content-Type':'application/json'}})
+    .then(function(r){ console.log('Zapier waitlist banner:', r.status); }).catch(function(e){ console.warn(e); });
   // success state
   document.querySelector('.wl-strip-right').innerHTML = '<div style="padding:20px 0"><div style="font-family:Bebas Neue,sans-serif;font-size:3rem;color:var(--pu);text-shadow:0 0 20px rgba(191,95,255,.5);line-height:1;margin-bottom:10px">&#10003; You\'re on the list!</div><p style="font-size:.72rem;color:rgba(242,240,255,.65);line-height:1.85;font-family:IBM Plex Mono,monospace">We\'ll text or email <strong style="color:var(--pu-lt)">'+name+'</strong> the moment a spot opens up.</p></div>';
 });
@@ -2608,14 +2602,5 @@ if(window.matchMedia('(pointer:fine)').matches){
 
 }catch(e){ console.warn('JS:',e); }
 </script>
-
-<!-- Isolated loader dismiss -->
-<script>
-setTimeout(function(){
-  var l=document.getElementById('pageLoader');
-  if(l){l.style.opacity='0';l.style.visibility='hidden';l.style.pointerEvents='none';}
-},1500);
-</script>
-
 </body>
 </html>
