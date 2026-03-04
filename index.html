@@ -41,11 +41,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body { overflow-x: hidden; overscroll-behavior-y: none; }
-/* Force GPU compositing for smooth paint on mobile */
-section, .hero-left, .hero-right, nav, footer {
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-}
+/* GPU compositing removed — breaks position:fixed on lightbox/modals */
 /* Ensure native momentum scrolling on iOS */
 html, body { -webkit-overflow-scrolling: touch; touch-action: pan-y; }
 img{display:block;max-width:100%}
