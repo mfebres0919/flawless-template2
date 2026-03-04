@@ -1815,13 +1815,22 @@ footer{
   </div>
   <!-- RIGHT: inline form -->
   <div class="wl-strip-right">
+    <div style="width:46px;height:46px;background:rgba(191,95,255,.08);border:1px solid rgba(191,95,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:16px">&#x23F0;</div>
     <div class="wl-strip-form">
       <input class="wl-strip-input" type="text" id="wlBannerName" placeholder="Your name">
       <input class="wl-strip-input" type="email" id="wlBannerEmail" placeholder="Email address">
       <input class="wl-strip-input" type="tel" id="wlBannerPhone" placeholder="Phone (optional)">
+      <select class="wl-strip-input" id="wlBannerService" style="-webkit-appearance:none;appearance:none;cursor:pointer;background-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 fill=%27none%27%3E%3Cpath d=%27M1 1l5 5 5-5%27 stroke=%27%23BF5FFF%27 stroke-width=%271.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right 13px center;padding-right:36px;background-color:rgba(191,95,255,.05);">
+        <option value="" disabled selected>Which service are you interested in?</option>
+        <option>Frontal Wig Install — $170</option>
+        <option>Closure Install — $150</option>
+        <option>Wig Revamp — $190</option>
+        <option>Custom Styling</option>
+        <option>Any available</option>
+      </select>
     </div>
     <button class="wl-strip-btn" id="wlTrigger">&#x23F0;&nbsp; Join the Waitlist</button>
-    <p class="wl-strip-note">Or <span style="color:var(--pu-lt);cursor:pointer;text-decoration:underline" id="wlFullForm">open full form</span> to select a service</p>
+    <p class="wl-strip-note">We'll reach out the moment a spot opens. No spam, ever.</p>
   </div>
 </div>
 
@@ -2457,17 +2466,16 @@ document.getElementById('wlTrigger').addEventListener('click', function(){
   var name = document.getElementById('wlBannerName').value.trim();
   var em = document.getElementById('wlBannerEmail').value.trim();
   var phone = document.getElementById('wlBannerPhone').value.trim();
+  var service = document.getElementById('wlBannerService').value;
   if(!name){ document.getElementById('wlBannerName').style.borderColor='var(--pu)'; document.getElementById('wlBannerName').focus(); return; }
   if(!em||!em.includes('@')){ document.getElementById('wlBannerEmail').style.borderColor='var(--pu)'; document.getElementById('wlBannerEmail').focus(); return; }
+  if(!service){ document.getElementById('wlBannerService').style.borderColor='var(--pu)'; document.getElementById('wlBannerService').focus(); return; }
   var date = new Date().toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
-  fetch('https://hooks.zapier.com/hooks/catch/26687679/u0pg4m2/',{method:'POST',body:new URLSearchParams({name:name,email:em,phone:phone,date:date})})
+  fetch('https://hooks.zapier.com/hooks/catch/26687679/u0pg4m2/',{method:'POST',body:new URLSearchParams({name:name,email:em,phone:phone,service:service,date:date})})
     .then(function(r){ console.log('Zapier waitlist banner:', r.status); }).catch(function(e){ console.warn(e); });
   // success state
   document.querySelector('.wl-strip-right').innerHTML = '<div style="padding:20px 0"><div style="font-family:Bebas Neue,sans-serif;font-size:3rem;color:var(--pu);text-shadow:0 0 20px rgba(191,95,255,.5);line-height:1;margin-bottom:10px">&#10003; You\'re on the list!</div><p style="font-size:.72rem;color:rgba(242,240,255,.65);line-height:1.85;font-family:IBM Plex Mono,monospace">We\'ll text or email <strong style="color:var(--pu-lt)">'+name+'</strong> the moment a spot opens up.</p></div>';
 });
-if(document.getElementById('wlFullForm')){
-  document.getElementById('wlFullForm').addEventListener('click', openWaitlist);
-}
 
 /* ── SERVICES CAROUSEL ── */
 var svcWrap = document.getElementById('svcScrollWrap');
