@@ -1294,7 +1294,7 @@ footer{
 .bm-loader.gone{display:none}
 .bm-spinner{width:32px;height:32px;border:2px solid rgba(191,95,255,.15);border-top-color:var(--pu);border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.bm-body iframe{width:100% !important;height:1600px !important;min-height:1600px !important;border:none !important;display:block !important}
+.bm-body iframe{width:100% !important;height:2200px !important;min-height:2200px !important;border:none !important;display:block !important}
 .bm-body>div{width:100%;}
 .bm-body .vagaro{width:100% !important;}
 @media(max-width:600px){
@@ -2117,7 +2117,7 @@ document.getElementById('wlSubmit').addEventListener('click',function(){
 });
 
 /* ── VAGARO IFRAME HEIGHT ENFORCEMENT ── */
-var MIN_IFRAME_H = 1600;
+var MIN_IFRAME_H = 2200;
 function enforceIframeHeight(){
   var frames = document.querySelectorAll('.bm-body iframe, #bmWidgetSlot iframe');
   frames.forEach(function(f){
