@@ -1269,31 +1269,6 @@ footer{
 @media(max-width:500px){.lb-prev{left:2px}.lb-next{right:2px}}
 
 /* ═══════════════════════════════════════
-   BOOKING MODAL
-═══════════════════════════════════════ */
-.bm-overlay{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:14px;background:rgba(2,1,4,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .35s}
-.bm-overlay.open{opacity:1;pointer-events:all}
-.bm-panel{position:relative;width:100%;max-width:840px;height:min(88vh,680px);background:var(--ink2);border:1px solid rgba(191,95,255,.2);box-shadow:0 0 60px rgba(191,95,255,.1),0 32px 80px rgba(0,0,0,.7);display:flex;flex-direction:column;overflow:hidden;transform:translateY(28px) scale(.97);transition:transform .4s cubic-bezier(.4,0,.2,1)}
-.bm-overlay.open .bm-panel{transform:translateY(0) scale(1)}
-.bm-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(191,95,255,.1);flex-shrink:0;gap:11px;background:rgba(6,6,10,.5)}
-.bm-header-left{display:flex;align-items:center;gap:9px}
-.bm-dot{width:7px;height:7px;background:var(--pu);animation:blink 2s ease infinite;box-shadow:0 0 8px var(--pu)}
-.bm-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1rem,2.5vw,1.3rem);letter-spacing:.15em;color:var(--chalk);text-transform:uppercase}
-.bm-svc-tag{font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pu);background:rgba(191,95,255,.07);border:1px solid rgba(191,95,255,.18);padding:3px 11px;white-space:nowrap;max-width:160px;overflow:hidden;text-overflow:ellipsis;font-family:'IBM Plex Mono',monospace}
-.bm-close{width:28px;height:28px;border:1px solid rgba(242,240,255,.12);background:transparent;color:rgba(242,240,255,.42);font-size:.82rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;flex-shrink:0;-webkit-tap-highlight-color:transparent}
-.bm-close:hover{border-color:var(--pu);color:var(--pu);background:rgba(191,95,255,.08)}
-.bm-body{flex:1;position:relative;overflow:hidden}
-.bm-body iframe{width:100%;height:100%;border:none;display:block}
-.bm-loader{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:var(--ink2);transition:opacity .4s}
-.bm-loader.gone{opacity:0;pointer-events:none}
-.bm-spinner{width:32px;height:32px;border:2px solid rgba(191,95,255,.12);border-top-color:var(--pu);animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.bm-loader p{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,240,255,.28);font-family:'IBM Plex Mono',monospace}
-.bm-foot{padding:8px 18px;border-top:1px solid rgba(191,95,255,.06);display:flex;align-items:center;justify-content:center;gap:7px;flex-shrink:0;background:rgba(6,6,10,.3)}
-.bm-foot p{font-size:.5rem;letter-spacing:.1em;color:rgba(242,240,255,.18);text-align:center;font-family:'IBM Plex Mono',monospace}
-.bm-foot span{color:var(--pu);font-size:.56rem}
-
-/* ═══════════════════════════════════════
    FLOAT SCROLL TOP
 ═══════════════════════════════════════ */
 .float-top{position:fixed;bottom:22px;right:22px;z-index:190;display:flex;align-items:center;justify-content:center;background:var(--pu);color:var(--ink);border:none;width:48px;height:48px;cursor:pointer;box-shadow:0 0 24px rgba(191,95,255,.5);transition:transform .3s,box-shadow .3s,opacity .4s;opacity:0;pointer-events:none;-webkit-tap-highlight-color:transparent}
@@ -1379,27 +1354,10 @@ footer{
 
 <!-- LIGHTBOX injected via JS -->
 
-<!-- BOOKING MODAL -->
-<div class="bm-overlay" id="bmOverlay">
-  <div class="bm-panel">
-    <div class="bm-header">
-      <div class="bm-header-left">
-        <div class="bm-dot"></div>
-        <span class="bm-title">Flawless<em style="font-style:normal;color:var(--pu)">Wig</em> Studio</span>
-      </div>
-      <span class="bm-svc-tag" id="bmSvcTag">Book Appointment</span>
-      <button class="bm-close" id="bmClose">&#x2715;</button>
-    </div>
-    <div class="bm-body">
-      <div class="bm-loader" id="bmLoader"><div class="bm-spinner"></div><p>Loading your booking...</p></div>
-      <iframe id="bmFrame" src="" title="Book an appointment" allow="payment"></iframe>
-    </div>
-    <div class="bm-foot">
-      <span>&#x2726;</span>
-      <p>Secured booking &nbsp;&middot;&nbsp; $25 deposit required &nbsp;&middot;&nbsp; Powered by Acuity Scheduling</p>
-      <span>&#x2726;</span>
-    </div>
-  </div>
+<!-- VAGARO BOOKING WIDGET (hidden) -->
+<div id="vagaroWidgetWrap" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;overflow:hidden;">
+<div class="vagaro" style="width:250px; padding:0; border:0; margin:0 auto; text-align:center; font-size:14px; color:#AAA;"><style>.vagaro a {font-size:14px; color:#AAA; text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetPopupLoader/OZqqCZOrC3WcT3qmV35y6puSdBuOc1WJDvwXDxUra2StkvCxdfkJE1wgEJgoapOUc9CvdfQOapkvdfYOc9YR6e?v=Vynym85xmHogTDhKLlTOlftTk13JSIqhzJJJePzTla4G#"></script>
+</div>
 </div>
 
 <!-- MOBILE MENU -->
@@ -2109,26 +2067,21 @@ document.getElementById('wlSubmit').addEventListener('click',function(){
   document.querySelector('.wl-panel').innerHTML='<div style="text-align:center;padding:28px 18px"><div style="font-family:Bebas Neue,sans-serif;font-size:3.8rem;color:var(--pu);text-shadow:0 0 16px rgba(191,95,255,.4);margin-bottom:14px">&#10003;</div><div style="font-family:Bebas Neue,sans-serif;font-size:2.2rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px">You\'re on the waitlist!</div><p style="font-size:.72rem;color:rgba(242,240,255,.44);line-height:1.85;max-width:290px;margin:0 auto;font-family:IBM Plex Mono,monospace">Hi <strong style="color:var(--pu-lt)">'+name+'</strong> — we\'ll reach out to <strong style="color:var(--pu-lt)">'+em+'</strong> the moment a spot opens.</p><button onclick="closeWaitlist()" style="margin-top:24px;display:inline-flex;padding:11px 26px;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;background:var(--pu);color:var(--ink);border:none;cursor:pointer;font-family:IBM Plex Mono,monospace;">Close</button></div>';
 });
 
-/* ── BOOKING MODAL ── */
-var ACUITY='https://acuityscheduling.com/schedule.php?owner=33887867';
-var bmOverlay=document.getElementById('bmOverlay');
-var bmFrame=document.getElementById('bmFrame');
-var bmLoader=document.getElementById('bmLoader');
-var bmSvcTag=document.getElementById('bmSvcTag');
-function openBooking(svc){
-  bmSvcTag.textContent=(svc&&svc!=='General')?svc:'Book Appointment';
-  var url=(svc&&svc!=='General')?ACUITY+'&appointmentType='+encodeURIComponent(svc):ACUITY;
-  bmLoader.classList.remove('gone'); bmFrame.src='';
-  bmOverlay.classList.add('open'); document.body.style.overflow='hidden';
-  setTimeout(function(){ bmFrame.src=url; },100);
-  bmFrame.onload=function(){ bmLoader.classList.add('gone'); };
+/* ── BOOKING ── */
+function openBooking(){
+  // Try to click Vagaro's injected button
+  var btn = document.querySelector('#vagaroWidgetWrap a[href*="vagaro"], #vagaroWidgetWrap button');
+  if(btn){ 
+    // temporarily make it clickable
+    var wrap = document.getElementById('vagaroWidgetWrap');
+    wrap.style.pointerEvents = 'all';
+    btn.click();
+    wrap.style.pointerEvents = 'none';
+    return;
+  }
+  // fallback: open in new tab
+  window.open('https://www.vagaro.com/cl/vixWnry6yfo~Zd7EIxFsc1qn9ric99yVQmL67UeLj~Y=','_blank');
 }
-function closeBooking(){
-  bmOverlay.classList.remove('open'); document.body.style.overflow='';
-  setTimeout(function(){ bmFrame.src=''; },400);
-}
-document.getElementById('bmClose').addEventListener('click', closeBooking);
-bmOverlay.addEventListener('click',function(e){ if(e.target===bmOverlay) closeBooking(); });
 
 /* ── ALL BOOK BUTTONS ── */
 // Scroll to services helper
