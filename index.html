@@ -1294,7 +1294,7 @@ footer{
 .bm-loader.gone{display:none}
 .bm-spinner{width:32px;height:32px;border:2px solid rgba(191,95,255,.15);border-top-color:var(--pu);border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.bm-body iframe{width:100% !important;height:1400px !important;min-height:1400px !important;border:none !important;display:block !important}
+.bm-body iframe{width:100% !important;height:1600px !important;min-height:1600px !important;border:none !important;display:block !important}
 .bm-body>div{width:100%;}
 .bm-body .vagaro{width:100% !important;}
 @media(max-width:600px){
@@ -2116,7 +2116,34 @@ document.getElementById('wlSubmit').addEventListener('click',function(){
   document.querySelector('.wl-panel').innerHTML='<div style="text-align:center;padding:28px 18px"><div style="font-family:Bebas Neue,sans-serif;font-size:3.8rem;color:var(--pu);text-shadow:0 0 16px rgba(191,95,255,.4);margin-bottom:14px">&#10003;</div><div style="font-family:Bebas Neue,sans-serif;font-size:2.2rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px">You\'re on the waitlist!</div><p style="font-size:.72rem;color:rgba(242,240,255,.44);line-height:1.85;max-width:290px;margin:0 auto;font-family:IBM Plex Mono,monospace">Hi <strong style="color:var(--pu-lt)">'+name+'</strong> — we\'ll reach out to <strong style="color:var(--pu-lt)">'+em+'</strong> the moment a spot opens.</p><button onclick="closeWaitlist()" style="margin-top:24px;display:inline-flex;padding:11px 26px;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;background:var(--pu);color:var(--ink);border:none;cursor:pointer;font-family:IBM Plex Mono,monospace;">Close</button></div>';
 });
 
-/* ── BOOKING MODAL ── */
+/* ── VAGARO IFRAME HEIGHT ENFORCEMENT ──
+   Vagaro resizes its iframe as you navigate (service → login → confirm).
+   This locks it to a minimum so content never gets cut off on mobile. */
+var MIN_IFRAME_H = 1600;
+function enforceIframeHeight(){
+  var frames = document.querySelectorAll('.bm-body iframe, #bmWidgetSlot iframe');
+  frames.forEach(function(f){
+    f.style.setProperty('height', MIN_IFRAME_H+'px', 'important');
+    f.style.setProperty('min-height', MIN_IFRAME_H+'px', 'important');
+  });
+}
+// Watch for iframes being added or resized
+var iframeObserver = new MutationObserver(function(mutations){
+  mutations.forEach(function(m){
+    m.addedNodes.forEach(function(n){
+      if(n.nodeName==='IFRAME') enforceIframeHeight();
+    });
+  });
+  enforceIframeHeight();
+});
+document.addEventListener('DOMContentLoaded', function(){
+  var slot = document.getElementById('bmWidgetSlot');
+  if(slot) iframeObserver.observe(slot, {childList:true, subtree:true, attributes:true, attributeFilter:['height','style']});
+  var body = document.querySelector('.bm-body');
+  if(body) iframeObserver.observe(body, {childList:true, subtree:true, attributes:true, attributeFilter:['height','style']});
+});
+// Also enforce on interval as fallback (Vagaro may resize after load)
+setInterval(enforceIframeHeight, 500);
 var bmOverlay = document.getElementById('bmOverlay');
 var bmSvcTag  = document.getElementById('bmSvcTag');
 var bmSlot    = document.getElementById('bmWidgetSlot');
