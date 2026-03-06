@@ -1280,7 +1280,7 @@ footer{
 ═══════════════════════════════════════ */
 .bm-overlay{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:14px;background:rgba(2,1,4,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .35s}
 .bm-overlay.open{opacity:1;pointer-events:all}
-.bm-panel{background:var(--ink);border:1px solid rgba(191,95,255,.18);width:calc(100% - 40px);max-width:780px;height:65vh;max-height:65vh;display:flex;flex-direction:column;transform:translateY(24px) scale(.97);transition:transform .4s cubic-bezier(.2,0,.2,1);border-radius:4px;overflow:clip}
+.bm-panel{background:var(--ink);border:1px solid rgba(191,95,255,.18);width:calc(100% - 40px);max-width:780px;height:auto;max-height:92vh;display:flex;flex-direction:column;transform:translateY(24px) scale(.97);transition:transform .4s cubic-bezier(.2,0,.2,1);border-radius:4px;overflow:hidden}
 .bm-overlay.open .bm-panel{transform:translateY(0) scale(1)}
 .bm-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(191,95,255,.12);flex-shrink:0}
 .bm-header-left{display:flex;align-items:center;gap:10px}
@@ -1289,19 +1289,14 @@ footer{
 .bm-svc-tag{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--pu);background:rgba(191,95,255,.08);padding:4px 10px;border:1px solid rgba(191,95,255,.2)}
 .bm-close{background:none;border:none;color:rgba(242,240,255,.4);font-size:1.2rem;cursor:pointer;line-height:1;padding:4px 8px;transition:color .2s}
 .bm-close:hover{color:var(--chalk)}
-.bm-body{flex:1;position:relative;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;overscroll-behavior:contain;}
+.bm-body{flex:1;position:relative;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0}
 .bm-loader{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:rgba(242,240,255,.3);font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.1em}
 .bm-loader.gone{display:none}
 .bm-spinner{width:32px;height:32px;border:2px solid rgba(191,95,255,.15);border-top-color:var(--pu);border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.bm-body iframe{width:100% !important;height:200px !important;min-height:200px !important;border:none !important;display:block !important}
-.bm-body>div{width:100%;}
-.bm-body .vagaro{width:100% !important;}
-@media(max-width:600px){
-  .bm-overlay{padding:0;align-items:flex-end;}
-  .bm-panel{width:100%;height:96vh;max-height:96vh;border-radius:12px 12px 0 0;transform:translateY(100%);}
-  .bm-overlay.open .bm-panel{transform:translateY(0) scale(1);}
-}
+.bm-body iframe{width:100% !important;height:680px !important;min-height:680px !important;border:none !important;display:block !important}
+.bm-body>div{height:auto !important}
+.bm-body .vagaro{width:100% !important;height:auto !important}
 .bm-foot{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 18px;border-top:1px solid rgba(191,95,255,.08);flex-shrink:0}
 .bm-foot span{color:rgba(191,95,255,.3);font-size:.7rem}
 .bm-foot p{font-family:'IBM Plex Mono',monospace;font-size:.5rem;letter-spacing:.12em;color:rgba(242,240,255,.2);text-transform:uppercase}
@@ -1483,6 +1478,70 @@ footer{
   </div>
 </div>
 
+
+
+<!-- ═══ SERVICES — HORIZONTAL SCROLL ═══ -->
+<section class="services" id="services">
+  <div class="svc-header">
+    <div class="svc-header-left">
+      <div class="eyebrow">Our Services</div>
+      <h2 class="svc-h2">What We<br><em>Offer</em></h2>
+    </div>
+    <p class="svc-header-right">Each service is tailored to your hair type, lifestyle, and the look you're going for. No cookie-cutter installs here.</p>
+  </div>
+  <div class="svc-scroll-wrap" id="svcScrollWrap">
+    <div class="svc-track">
+      <div class="svc-card" id="svcCard1">
+        <img src="img6.jpeg" alt="Frontal Wig Install">
+        <div class="svc-veil"></div>
+        <div class="svc-body">
+          <div class="svc-num">01 / Service</div>
+          <div class="svc-title">Frontal Wig Install</div>
+          <div class="svc-price">Starting at $170</div>
+          <button class="svc-book-btn" id="svcBtn1">Book This</button>
+        </div>
+      </div>
+      <div class="svc-card" id="svcCard2">
+        <img src="img7.jpeg" alt="Closure Install">
+        <div class="svc-veil"></div>
+        <div class="svc-body">
+          <div class="svc-num">02 / Service</div>
+          <div class="svc-title">Closure Install</div>
+          <div class="svc-price">Starting at $150</div>
+          <button class="svc-book-btn" id="svcBtn2">Book This</button>
+        </div>
+      </div>
+      <div class="svc-card" id="svcCard3">
+        <img src="img1.jpeg" alt="Wig Revamp">
+        <div class="svc-veil"></div>
+        <div class="svc-body">
+          <div class="svc-num">03 / Service</div>
+          <div class="svc-title">Wig Revamp</div>
+          <div class="svc-price">Starting at $190</div>
+          <button class="svc-book-btn" id="svcBtn3">Book This</button>
+        </div>
+      </div>
+      <div class="svc-card" id="svcCard4">
+        <img src="img10.jpeg" alt="Custom Styling">
+        <div class="svc-veil"></div>
+        <div class="svc-body">
+          <div class="svc-num">04 / Service</div>
+          <div class="svc-title">Custom Styling</div>
+          <div class="svc-price">Price varies</div>
+          <button class="svc-book-btn" id="svcCtaBtn">Book This</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="svc-drag-hint">Drag to explore all services</div>
+  <!-- Mobile / tablet arrow nav -->
+  <div class="svc-nav">
+    <button class="svc-arr" id="svcPrev" aria-label="Previous service">&#8592;</button>
+    <button class="svc-arr" id="svcNext" aria-label="Next service">&#8594;</button>
+    <div class="svc-nav-dots" id="svcDots"></div>
+  </div>
+</section>
+
 <!-- ═══ ABOUT ME ═══ -->
 <section class="about" id="about">
   <div class="about-inner">
@@ -1626,68 +1685,6 @@ footer{
       </div>
 
     </div>
-  </div>
-</section>
-
-<!-- ═══ SERVICES — HORIZONTAL SCROLL ═══ -->
-<section class="services" id="services">
-  <div class="svc-header">
-    <div class="svc-header-left">
-      <div class="eyebrow">Our Services</div>
-      <h2 class="svc-h2">What We<br><em>Offer</em></h2>
-    </div>
-    <p class="svc-header-right">Each service is tailored to your hair type, lifestyle, and the look you're going for. No cookie-cutter installs here.</p>
-  </div>
-  <div class="svc-scroll-wrap" id="svcScrollWrap">
-    <div class="svc-track">
-      <div class="svc-card" id="svcCard1">
-        <img src="img6.jpeg" alt="Frontal Wig Install">
-        <div class="svc-veil"></div>
-        <div class="svc-body">
-          <div class="svc-num">01 / Service</div>
-          <div class="svc-title">Frontal Wig Install</div>
-          <div class="svc-price">Starting at $170</div>
-          <button class="svc-book-btn" id="svcBtn1">Book This</button>
-        </div>
-      </div>
-      <div class="svc-card" id="svcCard2">
-        <img src="img7.jpeg" alt="Closure Install">
-        <div class="svc-veil"></div>
-        <div class="svc-body">
-          <div class="svc-num">02 / Service</div>
-          <div class="svc-title">Closure Install</div>
-          <div class="svc-price">Starting at $150</div>
-          <button class="svc-book-btn" id="svcBtn2">Book This</button>
-        </div>
-      </div>
-      <div class="svc-card" id="svcCard3">
-        <img src="img1.jpeg" alt="Wig Revamp">
-        <div class="svc-veil"></div>
-        <div class="svc-body">
-          <div class="svc-num">03 / Service</div>
-          <div class="svc-title">Wig Revamp</div>
-          <div class="svc-price">Starting at $190</div>
-          <button class="svc-book-btn" id="svcBtn3">Book This</button>
-        </div>
-      </div>
-      <div class="svc-card" id="svcCard4">
-        <img src="img10.jpeg" alt="Custom Styling">
-        <div class="svc-veil"></div>
-        <div class="svc-body">
-          <div class="svc-num">04 / Service</div>
-          <div class="svc-title">Custom Styling</div>
-          <div class="svc-price">Price varies</div>
-          <button class="svc-book-btn" id="svcCtaBtn">Book This</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="svc-drag-hint">Drag to explore all services</div>
-  <!-- Mobile / tablet arrow nav -->
-  <div class="svc-nav">
-    <button class="svc-arr" id="svcPrev" aria-label="Previous service">&#8592;</button>
-    <button class="svc-arr" id="svcNext" aria-label="Next service">&#8594;</button>
-    <div class="svc-nav-dots" id="svcDots"></div>
   </div>
 </section>
 
@@ -2116,28 +2113,12 @@ document.getElementById('wlSubmit').addEventListener('click',function(){
   document.querySelector('.wl-panel').innerHTML='<div style="text-align:center;padding:28px 18px"><div style="font-family:Bebas Neue,sans-serif;font-size:3.8rem;color:var(--pu);text-shadow:0 0 16px rgba(191,95,255,.4);margin-bottom:14px">&#10003;</div><div style="font-family:Bebas Neue,sans-serif;font-size:2.2rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px">You\'re on the waitlist!</div><p style="font-size:.72rem;color:rgba(242,240,255,.44);line-height:1.85;max-width:290px;margin:0 auto;font-family:IBM Plex Mono,monospace">Hi <strong style="color:var(--pu-lt)">'+name+'</strong> — we\'ll reach out to <strong style="color:var(--pu-lt)">'+em+'</strong> the moment a spot opens.</p><button onclick="closeWaitlist()" style="margin-top:24px;display:inline-flex;padding:11px 26px;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;background:var(--pu);color:var(--ink);border:none;cursor:pointer;font-family:IBM Plex Mono,monospace;">Close</button></div>';
 });
 
-/* ── VAGARO IFRAME HEIGHT ENFORCEMENT ── */
-var MIN_IFRAME_H = 2200;
-function enforceIframeHeight(){
-  var frames = document.querySelectorAll('.bm-body iframe, #bmWidgetSlot iframe');
-  frames.forEach(function(f){
-    f.style.setProperty('height', MIN_IFRAME_H+'px', 'important');
-    f.style.setProperty('min-height', MIN_IFRAME_H+'px', 'important');
-  });
-}
-var iframeObserver = new MutationObserver(function(){ enforceIframeHeight(); });
-document.addEventListener('DOMContentLoaded', function(){
-  var slot = document.getElementById('bmWidgetSlot');
-  if(slot) iframeObserver.observe(slot, {childList:true, subtree:true, attributes:true, attributeFilter:['height','style']});
-});
-setInterval(enforceIframeHeight, 500);
-
 /* ── BOOKING MODAL ── */
 var bmOverlay = document.getElementById('bmOverlay');
-var bmSvcTag  = document.getElementById('bmSvcTag');
-var bmSlot    = document.getElementById('bmWidgetSlot');
-var activeStore = null;
+var bmSvcTag = document.getElementById('bmSvcTag');
 
+var bmSlot = document.getElementById('bmWidgetSlot');
+var activeStore = null;
 function openBooking(storeId, svcLabel){
   var store = document.getElementById(storeId);
   if(!store) return;
@@ -2161,25 +2142,27 @@ function closeBooking(){
   bmOverlay.classList.remove('open');
   document.body.style.overflow = '';
 }
-
 document.getElementById('bmClose').addEventListener('click', closeBooking);
-bmOverlay.addEventListener('click', function(e){ if(e.target===bmOverlay) closeBooking(); });
-document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closeBooking(); closeWaitlist(); } });
+bmOverlay.addEventListener('click', function(e){ if(e.target === bmOverlay) closeBooking(); });
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBooking(); });
 
 /* ── ALL BOOK BUTTONS ── */
+// Scroll to services helper
 function scrollToServices(){
   smoothScrollTo(document.getElementById('services'), 900);
 }
+
+// Buttons that scroll to #services (not the modal)
 var scrollBtns = ['navBook','mobBookBtn','heroBook','ctaBook','polBook'];
 scrollBtns.forEach(function(id){
   var el = document.getElementById(id);
   if(!el) return;
   el.addEventListener('click', function(e){
     e.stopPropagation();
-    if(id==='mobBookBtn'){
+    if(id === 'mobBookBtn'){
       document.getElementById('mobMenu').classList.remove('open');
       document.getElementById('ham').classList.remove('open');
-      document.body.style.overflow='';
+      document.body.style.overflow = '';
     }
     scrollToServices();
   });
@@ -2192,29 +2175,33 @@ Object.keys(dealMap).forEach(function(id){
   if(el) el.addEventListener('click',function(e){ e.stopPropagation(); openBooking(dealMap[id], id==='dealBtn3'?'Custom Styling':'Frontal Wig Install'); });
 });
 
-// Service card 1 — Frontal Wig Install
-var s1=document.getElementById('svcBtn1');
-if(s1) s1.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore1','Frontal Wig Install'); });
-var c1=document.getElementById('svcCard1');
-if(c1) c1.addEventListener('click',function(e){ if(e.target.closest('#svcBtn1')) return; openBooking('vagaroStore1','Frontal Wig Install'); });
+// Service card buttons
+var s1=document.getElementById('svcBtn1'); if(s1) s1.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore1','Frontal Wig Install'); });
+var c1=document.getElementById('svcCard1'); if(c1) c1.addEventListener('click',function(e){ if(e.target.closest('#svcBtn1')) return; openBooking('vagaroStore1','Frontal Wig Install'); });
+var s2=document.getElementById('svcBtn2'); if(s2) s2.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore2','Closure Install'); });
+var c2=document.getElementById('svcCard2'); if(c2) c2.addEventListener('click',function(e){ if(e.target.closest('#svcBtn2')) return; openBooking('vagaroStore2','Closure Install'); });
+var s3=document.getElementById('svcBtn3'); if(s3) s3.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore3','Wig Revamp'); });
+var c3=document.getElementById('svcCard3'); if(c3) c3.addEventListener('click',function(e){ if(e.target.closest('#svcBtn3')) return; openBooking('vagaroStore3','Wig Revamp'); });
+var s4=document.getElementById('svcCtaBtn'); if(s4) s4.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore4','Custom Styling'); });
+var c4=document.getElementById('svcCard4'); if(c4) c4.addEventListener('click',function(e){ if(e.target.closest('#svcCtaBtn')) return; openBooking('vagaroStore4','Custom Styling'); });
 
-// Service card 2 — Closure Install
-var s2=document.getElementById('svcBtn2');
-if(s2) s2.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore2','Closure Install'); });
-var c2=document.getElementById('svcCard2');
-if(c2) c2.addEventListener('click',function(e){ if(e.target.closest('#svcBtn2')) return; openBooking('vagaroStore2','Closure Install'); });
-
-// Service card 3 — Wig Revamp
-var s3=document.getElementById('svcBtn3');
-if(s3) s3.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore3','Wig Revamp'); });
-var c3=document.getElementById('svcCard3');
-if(c3) c3.addEventListener('click',function(e){ if(e.target.closest('#svcBtn3')) return; openBooking('vagaroStore3','Wig Revamp'); });
-
-// Service card 4 — Custom Styling
-var s4=document.getElementById('svcCtaBtn');
-if(s4) s4.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore4','Custom Styling'); });
-var c4=document.getElementById('svcCard4');
-if(c4) c4.addEventListener('click',function(e){ if(e.target.closest('#svcCtaBtn')) return; openBooking('vagaroStore4','Custom Styling'); });
+// Service cards still open booking modal
+var svcCardMap = {
+  svcBtn1:'Frontal Wig Install', svcBtn2:'Closure Install',
+  svcBtn3:'Wig Revamp', svcCtaBtn:'General'
+};
+Object.keys(svcCardMap).forEach(function(id){
+  var el = document.getElementById(id);
+  if(el) el.addEventListener('click', function(e){
+    e.stopPropagation();
+    openBooking(svcCardMap[id]);
+  });
+});
+['svcCard1','svcCard2','svcCard3','svcCard4'].forEach(function(id,i){
+  var svcs=['Frontal Wig Install','Closure Install','Wig Revamp','General'];
+  var el=document.getElementById(id);
+  if(el) el.addEventListener('click',function(){ openBooking(svcs[i]); });
+});
 document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeBooking(); closeWaitlist(); } });
 
 /* ── NAV ── */
@@ -2536,6 +2523,8 @@ setTimeout(function(){
 },1500);
 </script>
 
+
+
 <!-- ═══ VAGARO EMBEDS — off-screen so iframes initialize on page load ═══ -->
 <div id="vagaroStore1" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
   <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6puSdBuOc1WJD1wOc1WO61CxdfkJE1wgEJgoapOUc9CvdfQOapkvdfYOc9YSd8?v=JPxUJUltGKoT5ZK06gzVmfQzwdZObVSKbb4EmC0tyRIW#"></script></div>
@@ -2549,7 +2538,6 @@ setTimeout(function(){
 <div id="vagaroStore4" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
   <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6puSdBuOc1WJD1wOc1WO61CxdfkJE1wgEJgoapOUc9CvdfQOapkvdfYOc9aO6G?v=AnE6XryFO6I22PDBcKy3l1guzXvyE8eyNSxYosdqr5Ae#"></script></div>
 </div>
-
 
 </body>
 </html>
