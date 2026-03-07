@@ -136,7 +136,7 @@ nav{
 nav.solid{background:rgba(6,6,10,.99)}
 .nav-left{display:none;list-style:none;gap:clamp(20px,3vw,44px);align-items:center;justify-content:flex-end}
 .nav-right{display:none;list-style:none;gap:clamp(20px,3vw,44px);align-items:center;justify-content:flex-start}
-.nav-left a,.nav-right a{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgb(242, 240, 255);transition:color .25s;font-family:'IBM Plex Mono',monospace;position:relative}
+.nav-left a,.nav-right a{font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(242,240,255,.44);transition:color .25s;font-family:'IBM Plex Mono',monospace;position:relative}
 .nav-left a::after,.nav-right a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--pu);transform:scaleX(0);transition:transform .3s;transform-origin:right;box-shadow:0 0 6px rgba(191,95,255,.7)}
 .nav-left a:hover,.nav-right a:hover{color:var(--pu-lt)}
 .nav-left a:hover::after,.nav-right a:hover::after{transform:scaleX(1);transform-origin:left}
@@ -155,7 +155,7 @@ nav.solid{background:rgba(6,6,10,.99)}
   transform:translateX(100%);transition:transform .45s cubic-bezier(.4,0,.2,1);
 }
 .mob-menu.open{transform:translateX(0)}
-.mob-menu a{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,10vw,4.5rem);letter-spacing:.1em;text-transform:uppercase;color:rgba(242,240,255,1);transition:color .25s,text-shadow .25s;-webkit-tap-highlight-color:transparent}
+.mob-menu a{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,10vw,4.5rem);letter-spacing:.1em;text-transform:uppercase;color:rgba(242,240,255,.55);transition:color .25s,text-shadow .25s;-webkit-tap-highlight-color:transparent}
 .mob-menu a:hover{color:var(--pu);text-shadow:0 0 30px rgba(191,95,255,.5)}
 @media(min-width:860px){
   .nav-left{display:flex}
@@ -278,7 +278,7 @@ nav.solid{background:rgba(6,6,10,.99)}
 .hero-scroll{
   position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
   display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;
-  font-size:.44rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(242,240,255,1);
+  font-size:.44rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(242,240,255,.3);
   font-family:'IBM Plex Mono',monospace;
 }
 .hero-scroll::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,rgba(191,95,255,.6),transparent);display:block}
@@ -289,8 +289,8 @@ nav.solid{background:rgba(6,6,10,.99)}
 ═══════════════════════════════════════ */
 .ticker{background:var(--pu);overflow:hidden;padding:10px 0;white-space:nowrap}
 .ticker-track{display:inline-flex;animation:tick 22s linear infinite}
-.ticker-track span{font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--ink);padding:0 24px;font-family:'IBM Plex Mono',monospace}
-.ticker-track .sep{color:rgba(0,0,0,.25);font-size:1rem;vertical-align:middle}
+.ticker-track span{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--ink);padding:0 24px;font-family:'IBM Plex Mono',monospace}
+.ticker-track .sep{color:rgba(0,0,0,.25);font-size:.78rem;vertical-align:middle}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ═══════════════════════════════════════
@@ -310,7 +310,7 @@ nav.solid{background:rgba(6,6,10,.99)}
 .svc-header-left .eyebrow::before{content:'// '}
 .svc-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);font-weight:400;line-height:.9;letter-spacing:.03em;text-transform:uppercase}
 .svc-h2 em{font-style:normal;color:var(--pu);text-shadow:0 0 9px rgba(191,95,255,.22);animation:purpleFlicker 8s ease-in-out infinite}
-.svc-header-right{font-size:.7rem;color:rgb(242, 240, 255);max-width:220px;line-height:1.8;font-family:'IBM Plex Mono',monospace;align-self:flex-end;padding-bottom:8px}
+.svc-header-right{font-size:.7rem;color:rgba(242,240,255,.68);max-width:220px;line-height:1.8;font-family:'IBM Plex Mono',monospace;align-self:flex-end;padding-bottom:8px}
 /* drag scroll */
 .svc-scroll-wrap{overflow-x:auto;overflow-y:hidden;cursor:grab;-webkit-overflow-scrolling:touch;padding-bottom:4px;touch-action:pan-x;scroll-snap-type:x mandatory;}
 .svc-card{scroll-snap-align:start;}
@@ -404,7 +404,7 @@ nav.solid{background:rgba(6,6,10,.99)}
   margin-bottom:14px;
 }
 .wl-strip-h2 em{font-style:normal;color:var(--pu);text-shadow:0 0 9px rgba(191,95,255,.22);animation:purpleFlickerBig 11s ease-in-out infinite}
-.wl-strip p{font-size:.72rem;color:rgba(242,240,255,1);line-height:1.85;font-family:'IBM Plex Mono',monospace;max-width:380px}
+.wl-strip p{font-size:.72rem;color:rgba(242,240,255,.65);line-height:1.85;font-family:'IBM Plex Mono',monospace;max-width:380px}
 .wl-strip p strong{color:var(--pu-lt)}
 .wl-strip-right{
   position:relative;z-index:1;
@@ -418,7 +418,7 @@ nav.solid{background:rgba(6,6,10,.99)}
   color:var(--chalk);font-family:'IBM Plex Mono',monospace;font-size:.74rem;
   outline:none;transition:border-color .25s;border-radius:0;
 }
-.wl-strip-input::placeholder{color:rgba(242,240,255,1)}
+.wl-strip-input::placeholder{color:rgba(242,240,255,.3)}
 .wl-strip-input:focus{border-color:var(--pu);box-shadow:0 0 12px rgba(191,95,255,.15)}
 .wl-strip-btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
@@ -428,13 +428,7 @@ nav.solid{background:rgba(6,6,10,.99)}
   box-shadow:0 0 24px rgba(191,95,255,.4);
 }
 .wl-strip-btn:hover{background:var(--pu-lt);box-shadow:0 0 40px rgba(191,95,255,.65);transform:translateY(-2px)}
-.wl-how-title{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pu);font-weight:700;margin-bottom:18px;font-family:'IBM Plex Mono',monospace}
-.wl-steps{display:flex;flex-direction:column;gap:18px;margin-bottom:24px}
-.wl-step{display:flex;gap:16px;align-items:flex-start}
-.wl-step-num{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--pu);opacity:.7;line-height:1;min-width:28px}
-.wl-step strong{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk);display:block;margin-bottom:4px}
-.wl-step p{font-size:.65rem;color:rgba(242,240,255,1);line-height:1.75;font-family:'IBM Plex Mono',monospace;margin:0}
-.wl-strip-note{font-size:.52rem;color:rgba(242,240,255,1);font-family:'IBM Plex Mono',monospace;line-height:1.6}
+.wl-strip-note{font-size:.52rem;color:rgba(242,240,255,.35);font-family:'IBM Plex Mono',monospace;line-height:1.6}
 
 /* ═══════════════════════════════════════
    SPECIALS — EDITORIAL ROW LAYOUT
@@ -477,19 +471,19 @@ nav.solid{background:rgba(6,6,10,.99)}
 .deal-item:hover{background:rgba(191,95,255,.03)}
 .deal-item-num{
   font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,4.5rem);
-  color:rgba(191, 95, 255, 0.625);letter-spacing:.06em;line-height:1;
+  color:rgba(191,95,255,.15);letter-spacing:.06em;line-height:1;
   min-width:80px;
 }
 .deal-item-body{flex:1}
 .deal-item-tag{font-size:.46rem;letter-spacing:.28em;text-transform:uppercase;color:var(--pu);font-weight:700;margin-bottom:6px;font-family:'IBM Plex Mono',monospace}
 .deal-item-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.5rem);color:var(--chalk);line-height:1;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
-.deal-item-desc{font-size:.68rem;color:rgb(242, 240, 255);line-height:1.75;max-width:480px;font-family:'IBM Plex Mono',monospace}
+.deal-item-desc{font-size:.68rem;color:rgba(242,240,255,.72);line-height:1.75;max-width:480px;font-family:'IBM Plex Mono',monospace}
 .deal-item-right{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 @media(min-width:600px){.deal-item-right{align-items:flex-end}}
 .deal-price-row{display:flex;align-items:baseline;gap:8px}
 .deal-new{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--pu);letter-spacing:.05em;text-shadow:0 0 7px rgba(191,95,255,.2);animation:purpleFlicker 6s ease-in-out infinite}
-.deal-old{font-size:.68rem;color:rgba(242,240,255,1);text-decoration:line-through;font-family:'IBM Plex Mono',monospace}
-.deal-expires{font-size:.48rem;letter-spacing:.16em;color:rgb(242, 240, 255);text-transform:uppercase;font-family:'IBM Plex Mono',monospace}
+.deal-old{font-size:.68rem;color:rgba(242,240,255,.3);text-decoration:line-through;font-family:'IBM Plex Mono',monospace}
+.deal-expires{font-size:.48rem;letter-spacing:.16em;color:rgba(242,240,255,.6);text-transform:uppercase;font-family:'IBM Plex Mono',monospace}
 
 /* ═══════════════════════════════════════
    GALLERY
@@ -516,8 +510,8 @@ nav.solid{background:rgba(6,6,10,.99)}
 .gal-panel .eyebrow::before{content:'// '}
 .gal-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:400;line-height:.9;letter-spacing:.03em;text-transform:uppercase;margin-bottom:18px}
 .gal-h2 em{font-style:normal;color:var(--pu);text-shadow:0 0 9px rgba(191,95,255,.22);animation:purpleFlickerBig 13s ease-in-out infinite}
-.gal-sub{font-size:.7rem;color:rgba(242,240,255,1);line-height:1.85;font-family:'IBM Plex Mono',monospace;margin-bottom:28px;max-width:260px}
-.gal-counter{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;color:rgba(242,240,255,1);margin-bottom:16px;}
+.gal-sub{font-size:.7rem;color:rgba(242,240,255,.65);line-height:1.85;font-family:'IBM Plex Mono',monospace;margin-bottom:28px;max-width:260px}
+.gal-counter{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;color:rgba(242,240,255,.3);margin-bottom:16px;}
 .gal-counter em{font-style:normal;color:var(--pu);font-size:1.4rem}
 .gal-nav{display:flex;gap:10px;}
 .gal-arrow{width:44px;height:44px;border:1px solid rgba(191,95,255,.3);background:transparent;color:var(--chalk);font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;-webkit-tap-highlight-color:transparent;font-family:'IBM Plex Mono',monospace;}
@@ -525,7 +519,7 @@ nav.solid{background:rgba(6,6,10,.99)}
 @media(max-width:759px){.gal-counter,.gal-nav,.gal-dots{display:none}}
 .gal-mobile-controls{display:none;align-items:center;gap:12px;padding:16px var(--pad) 0;}
 @media(max-width:759px){.gal-mobile-controls{display:flex}}
-.gal-mob-counter{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;color:rgba(242,240,255,1);margin-right:4px;white-space:nowrap;}
+.gal-mob-counter{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;color:rgba(242,240,255,.3);margin-right:4px;white-space:nowrap;}
 .gal-mob-counter em{font-style:normal;color:var(--pu);font-size:1.3rem}
 .gal-dot{width:6px;height:6px;background:rgba(191,95,255,.25);transition:all .3s;cursor:pointer;flex-shrink:0;}
 .gal-dot.active{background:var(--pu);width:22px;box-shadow:0 0 8px rgba(191,95,255,.6)}
@@ -682,7 +676,7 @@ nav.solid{background:rgba(6,6,10,.99)}
 .t-card{
   flex:0 0 100%;
   padding:32px 0;
-  border-top:2px solid rgba(191, 95, 255, 0.55);
+  border-top:2px solid rgba(191,95,255,.15);
   position:relative;
 }
 @media(min-width:760px){.t-card{flex:0 0 calc(50% - 7px)}}
@@ -698,10 +692,10 @@ nav.solid{background:rgba(6,6,10,.99)}
 .t-attr{display:flex;align-items:center;gap:12px}
 .t-img{width:38px;height:38px;object-fit:cover;object-position:top;border:1px solid var(--pu);flex-shrink:0;filter:saturate(.8)}
 .t-name{font-size:.62rem;font-weight:700;color:var(--pu-lt);font-family:'IBM Plex Mono',monospace}
-.t-role{font-size:.5rem;color:rgba(242,240,255,1);letter-spacing:.14em;text-transform:uppercase;margin-top:2px;font-family:'IBM Plex Mono',monospace}
+.t-role{font-size:.5rem;color:rgba(242,240,255,.3);letter-spacing:.14em;text-transform:uppercase;margin-top:2px;font-family:'IBM Plex Mono',monospace}
 
 .test-controls{display:flex;align-items:center;gap:9px;margin-top:28px}
-.t-btn{width:38px;height:38px;border:1px solid rgba(242, 240, 255, 0.668);background:transparent;color:var(--chalk);font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;-webkit-tap-highlight-color:transparent}
+.t-btn{width:38px;height:38px;border:1px solid rgba(242,240,255,.13);background:transparent;color:var(--chalk);font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;-webkit-tap-highlight-color:transparent}
 .t-btn:hover,.t-btn.lit{border-color:var(--pu);background:rgba(191,95,255,.1);color:var(--pu);box-shadow:0 0 12px rgba(191,95,255,.2)}
 .t-dots{display:flex;gap:5px;align-items:center;margin-left:4px}
 .t-dot{width:5px;height:5px;background:rgba(242,240,255,.16);transition:background .3s,transform .3s;cursor:pointer}
@@ -711,10 +705,10 @@ nav.solid{background:rgba(6,6,10,.99)}
 .g-row{display:flex;align-items:center;gap:11px}
 .g-logo{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;font-family:serif;color:var(--chalk);flex-shrink:0;background:linear-gradient(135deg,#4285F4 0%,#34A853 40%,#FBBC05 70%,#EA4335 100%)}
 .g-stars{color:#FBBC05;font-size:.75rem;letter-spacing:2px}
-.g-label{font-size:.5rem;color:rgb(255, 255, 255);letter-spacing:.12em;text-transform:uppercase;margin-top:2px;font-family:'IBM Plex Mono',monospace}
+.g-label{font-size:.5rem;color:rgba(242,240,255,.34);letter-spacing:.12em;text-transform:uppercase;margin-top:2px;font-family:'IBM Plex Mono',monospace}
 .review-links{display:flex;gap:8px;flex-wrap:wrap}
 .rev-btn{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;transition:all .25s;cursor:pointer;font-family:'IBM Plex Mono',monospace;text-decoration:none;border:none}
-.rev-btn.read{background:rgba(242,240,255,.04);border:1px solid rgba(242, 240, 255, 0.513);color:rgba(242,240,255,1)}
+.rev-btn.read{background:rgba(242,240,255,.04);border:1px solid rgba(242,240,255,.1);color:rgba(242,240,255,.55)}
 .rev-btn.read:hover{border-color:var(--pu);color:var(--pu-lt)}
 .rev-btn.write{background:var(--pu);color:var(--ink);box-shadow:0 0 16px rgba(191,95,255,.3)}
 .rev-btn.write:hover{background:var(--pu-lt);box-shadow:0 0 28px rgba(191,95,255,.55);transform:translateY(-2px)}
@@ -746,8 +740,8 @@ nav.solid{background:rgba(6,6,10,.99)}
   .faq-grid{grid-template-columns:1fr 1fr;column-gap:clamp(24px,6vw,80px)}
 }
 .faq-list{display:flex;flex-direction:column}
-.faq-item{border-bottom:1px solid rgba(191,95,255,.5)}
-.faq-item:first-child{border-top:1px solid rgba(191,95,255,.5)}
+.faq-item{border-bottom:1px solid rgba(191,95,255,.1)}
+.faq-item:first-child{border-top:1px solid rgba(191,95,255,.1)}
 .faq-q{
   display:flex;align-items:center;justify-content:space-between;gap:14px;
   padding:17px 0;cursor:pointer;-webkit-tap-highlight-color:transparent;
@@ -758,7 +752,7 @@ nav.solid{background:rgba(6,6,10,.99)}
 .faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(191,95,255,.1);border-color:var(--pu)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .4s}
 .faq-item.open .faq-a{max-height:260px;padding-bottom:16px}
-.faq-a p{font-size:.7rem;line-height:1.85;color:rgb(255, 255, 255);padding-right:34px;font-family:'IBM Plex Mono',monospace}
+.faq-a p{font-size:.7rem;line-height:1.85;color:rgba(242,240,255,.7);padding-right:34px;font-family:'IBM Plex Mono',monospace}
 
 /* ═══════════════════════════════════════
    CONTACT — FULL WIDTH SPLIT BG
@@ -906,7 +900,7 @@ nav.solid{background:rgba(6,6,10,.99)}
 
 .pol-card-num{
   font-family:'Bebas Neue',sans-serif;
-  font-size:3.5rem;color:rgba(191, 95, 255, 0.443);
+  font-size:3.5rem;color:rgba(191,95,255,.12);
   line-height:1;letter-spacing:.06em;
   margin-bottom:14px;
   transition:color .3s;
@@ -919,7 +913,7 @@ nav.solid{background:rgba(6,6,10,.99)}
   margin-bottom:8px;line-height:1.1;
 }
 .pol-card-text{
-  font-size:.68rem;color:rgba(242,240,255,1);line-height:1.8;
+  font-size:.68rem;color:rgba(242,240,255,.65);line-height:1.8;
   font-family:'IBM Plex Mono',monospace;
 }
 /* accent dot on title */
@@ -938,7 +932,7 @@ nav.solid{background:rgba(6,6,10,.99)}
   border-top:1px solid rgba(191,95,255,.18);
 }
 @media(min-width:560px){.pol-cta-row{flex-direction:row;align-items:center;justify-content:space-between}}
-.pol-cta-note{font-size:.68rem;color:rgba(242,240,255,1);font-family:'IBM Plex Mono',monospace;line-height:1.7}
+.pol-cta-note{font-size:.68rem;color:rgba(242,240,255,.55);font-family:'IBM Plex Mono',monospace;line-height:1.7}
 .pol-cta-note strong{color:var(--pu-lt)}
 
 /* ═══════════════════════════════════════
@@ -959,15 +953,15 @@ footer{
 .foot-brand{}
 .foot-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.22em;color:var(--chalk);display:block;margin-bottom:10px;text-transform:uppercase}
 .foot-logo em{font-style:normal;color:var(--pu);text-shadow:0 0 12px rgba(191,95,255,.4)}
-.foot-desc{font-size:.66rem;line-height:1.85;color:rgba(242,240,255,1);max-width:200px;margin-bottom:18px;font-family:'IBM Plex Mono',monospace}
+.foot-desc{font-size:.66rem;line-height:1.85;color:rgba(242,240,255,.55);max-width:200px;margin-bottom:18px;font-family:'IBM Plex Mono',monospace}
 .newsletter{display:flex;border:1px solid rgba(191,95,255,.2)}
 .newsletter input{flex:1;min-width:0;background:transparent;border:none;padding:9px 13px;color:var(--chalk);font-family:'IBM Plex Mono',monospace;font-size:.65rem;outline:none}
-.newsletter input::placeholder{color:rgba(242,240,255,1)}
+.newsletter input::placeholder{color:rgba(242,240,255,.2)}
 .newsletter button{background:var(--pu);border:none;padding:9px 14px;font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink);cursor:pointer;font-family:'IBM Plex Mono',monospace;white-space:nowrap;transition:background .25s}
 .newsletter button:hover{background:var(--pu-lt)}
 .foot-col h4{font-size:.48rem;letter-spacing:.32em;text-transform:uppercase;color:var(--pu);font-weight:700;margin-bottom:14px;font-family:'IBM Plex Mono',monospace}
 .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-.foot-col ul a{font-size:.66rem;color:rgb(255, 255, 255);transition:color .25s;font-family:'IBM Plex Mono',monospace}
+.foot-col ul a{font-size:.66rem;color:rgba(242,240,255,.28);transition:color .25s;font-family:'IBM Plex Mono',monospace}
 .foot-col ul a:hover{color:var(--pu-lt)}
 /* minimal bottom row */
 .foot-bottom{
@@ -976,7 +970,7 @@ footer{
 @media(min-width:560px){.foot-bottom{flex-direction:row;justify-content:space-between;align-items:center}}
 .foot-copy{font-size:.52rem;color:rgba(242,240,255,.18);font-family:'IBM Plex Mono',monospace}
 .socials{display:flex;gap:7px}
-.soc-btn{width:30px;height:30px;border:1px solid rgba(242,240,255,.09);display:flex;align-items:center;justify-content:center;font-size:.6rem;color:rgba(242,240,255,1);transition:all .25s;-webkit-tap-highlight-color:transparent}
+.soc-btn{width:30px;height:30px;border:1px solid rgba(242,240,255,.09);display:flex;align-items:center;justify-content:center;font-size:.6rem;color:rgba(242,240,255,.3);transition:all .25s;-webkit-tap-highlight-color:transparent}
 .soc-btn:hover{border-color:var(--pu);color:var(--pu);box-shadow:0 0 10px rgba(191,95,255,.25)}
 
 /* ═══════════════════════════════════════
@@ -1080,7 +1074,7 @@ footer{
   margin-bottom:18px;
 }
 .about-bio{
-  font-size:.72rem;color:rgb(242, 240, 255);
+  font-size:.72rem;color:rgba(242,240,255,.7);
   line-height:2;font-family:'IBM Plex Mono',monospace;
   margin-bottom:28px;
 }
@@ -1102,7 +1096,7 @@ footer{
 }
 .about-stat-l{
   font-size:.44rem;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(242,240,255,1);font-family:'IBM Plex Mono',monospace;
+  color:rgba(242,240,255,.55);font-family:'IBM Plex Mono',monospace;
 }
 /* social links */
 .about-socials{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
@@ -1110,7 +1104,7 @@ footer{
   display:inline-flex;align-items:center;gap:7px;
   padding:8px 16px;border:1px solid rgba(191,95,255,.25);
   font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(242,240,255,1);font-family:'IBM Plex Mono',monospace;
+  color:rgba(242,240,255,.65);font-family:'IBM Plex Mono',monospace;
   transition:all .25s;text-decoration:none;
 }
 .about-social-link:hover{
@@ -1156,7 +1150,7 @@ footer{
 }
 .nc-h2 em{font-style:normal;color:var(--pu);text-shadow:0 0 9px rgba(191,95,255,.22);animation:purpleFlickerBig 9s ease-in-out infinite}
 .nc-header-sub{
-  font-size:.7rem;color:rgb(242, 240, 255);line-height:1.85;
+  font-size:.7rem;color:rgba(242,240,255,.6);line-height:1.85;
   font-family:'IBM Plex Mono',monospace;max-width:320px;
 }
 @media(min-width:760px){.nc-header-sub{text-align:right}}
@@ -1193,7 +1187,7 @@ footer{
   margin-bottom:5px;line-height:1.1;
 }
 .nc-step-text{
-  font-size:.68rem;color:rgb(242, 240, 255);
+  font-size:.68rem;color:rgba(242,240,255,.62);
   line-height:1.8;font-family:'IBM Plex Mono',monospace;
 }
 
@@ -1225,7 +1219,7 @@ footer{
 }
 .nc-promo-h3 em{font-style:normal;color:var(--pu);text-shadow:0 0 9px rgba(191,95,255,.22);animation:purpleFlicker 8s ease-in-out infinite}
 .nc-promo-desc{
-  font-size:.7rem;color:rgba(242,240,255,1);line-height:1.85;
+  font-size:.7rem;color:rgba(242,240,255,.65);line-height:1.85;
   font-family:'IBM Plex Mono',monospace;margin-bottom:22px;
 }
 .nc-code-box{
@@ -1241,12 +1235,12 @@ footer{
 }
 .nc-code-label{
   font-size:.48rem;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(242,240,255,1);font-family:'IBM Plex Mono',monospace;
+  color:rgba(242,240,255,.45);font-family:'IBM Plex Mono',monospace;
 }
 .nc-what-wrap{margin-bottom:24px}
 .nc-what-title{
   font-size:.5rem;letter-spacing:.24em;text-transform:uppercase;
-  color:rgba(242,240,255,1);font-family:'IBM Plex Mono',monospace;
+  color:rgba(242,240,255,.45);font-family:'IBM Plex Mono',monospace;
   margin-bottom:10px;
 }
 .nc-what-list{display:flex;flex-direction:column;gap:8px}
@@ -1266,9 +1260,9 @@ footer{
 .lightbox.open{display:flex}
 .lb-img{max-width:min(88vw,560px);max-height:86vh;object-fit:contain;transform:scale(.92);transition:transform .4s cubic-bezier(.4,0,.2,1);border:1px solid rgba(191,95,255,.2)}
 .lightbox.open .lb-img{transform:scale(1)}
-.lb-close{position:absolute;top:16px;right:20px;font-size:1.4rem;color:rgba(242,240,255,1);cursor:pointer;line-height:1;transition:color .25s;background:none;border:none;-webkit-tap-highlight-color:transparent}
+.lb-close{position:absolute;top:16px;right:20px;font-size:1.4rem;color:rgba(242,240,255,.42);cursor:pointer;line-height:1;transition:color .25s;background:none;border:none;-webkit-tap-highlight-color:transparent}
 .lb-close:hover{color:var(--pu)}
-.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);font-size:3rem;color:rgba(242,240,255,1);background:none;border:none;cursor:pointer;padding:10px 18px;transition:color .25s;-webkit-tap-highlight-color:transparent;line-height:1;user-select:none}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);font-size:3rem;color:rgba(242,240,255,.4);background:none;border:none;cursor:pointer;padding:10px 18px;transition:color .25s;-webkit-tap-highlight-color:transparent;line-height:1;user-select:none}
 .lb-prev{left:10px}
 .lb-next{right:10px}
 .lb-prev:hover,.lb-next:hover{color:var(--pu)}
@@ -1286,26 +1280,26 @@ footer{
 ═══════════════════════════════════════ */
 .bm-overlay{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:14px;background:rgba(2,1,4,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .35s}
 .bm-overlay.open{opacity:1;pointer-events:all}
-.bm-panel{background:var(--ink);border:1px solid rgba(191,95,255,.18);width:calc(100% - 40px);max-width:780px;height:auto;max-height:92vh;display:flex;flex-direction:column;transform:translateY(24px) scale(.97);transition:transform .4s cubic-bezier(.2,0,.2,1);border-radius:4px;overflow:hidden}
+.bm-panel{background:var(--ink);border:1px solid rgba(191,95,255,.18);width:calc(100% - 40px);max-width:780px;height:92vh;max-height:92vh;display:flex;flex-direction:column;transform:translateY(24px) scale(.97);transition:transform .4s cubic-bezier(.2,0,.2,1);border-radius:4px;overflow:hidden}
 .bm-overlay.open .bm-panel{transform:translateY(0) scale(1)}
 .bm-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(191,95,255,.12);flex-shrink:0}
 .bm-header-left{display:flex;align-items:center;gap:10px}
 .bm-dot{width:8px;height:8px;background:var(--pu);border-radius:50%;box-shadow:0 0 8px rgba(191,95,255,.6)}
 .bm-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em;color:var(--chalk)}
 .bm-svc-tag{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--pu);background:rgba(191,95,255,.08);padding:4px 10px;border:1px solid rgba(191,95,255,.2)}
-.bm-close{background:none;border:none;color:rgba(242,240,255,1);font-size:1.2rem;cursor:pointer;line-height:1;padding:4px 8px;transition:color .2s}
+.bm-close{background:none;border:none;color:rgba(242,240,255,.4);font-size:1.2rem;cursor:pointer;line-height:1;padding:4px 8px;transition:color .2s}
 .bm-close:hover{color:var(--chalk)}
 .bm-body{flex:1;position:relative;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0}
-.bm-loader{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:rgba(242,240,255,1);font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.1em}
+.bm-loader{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:rgba(242,240,255,.3);font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.1em}
 .bm-loader.gone{display:none}
 .bm-spinner{width:32px;height:32px;border:2px solid rgba(191,95,255,.15);border-top-color:var(--pu);border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.bm-body iframe{width:100% !important;height:950px !important;min-height:950px !important;border:none !important;display:block !important}
-.bm-body>div{height:auto !important}
-.bm-body .vagaro{width:100% !important;height:auto !important}
+.bm-body iframe{width:100% !important;height:100% !important;min-height:600px !important;border:none !important;display:block !important}
+.bm-body>div{height:100% !important}
+.bm-body .vagaro{width:100% !important;height:100% !important}
 .bm-foot{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 18px;border-top:1px solid rgba(191,95,255,.08);flex-shrink:0}
 .bm-foot span{color:rgba(191,95,255,.3);font-size:.7rem}
-.bm-foot p{font-family:'IBM Plex Mono',monospace;font-size:.5rem;letter-spacing:.12em;color:rgba(242,240,255,1);text-transform:uppercase}
+.bm-foot p{font-family:'IBM Plex Mono',monospace;font-size:.5rem;letter-spacing:.12em;color:rgba(242,240,255,.2);text-transform:uppercase}
 
 /* ═══════════════════════════════════════
    WAITLIST MODAL
@@ -1317,16 +1311,16 @@ footer{
 .wl-icon{width:46px;height:46px;background:rgba(191,95,255,.08);border:1px solid rgba(191,95,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:16px}
 .wl-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,2.8rem);line-height:.95;margin-bottom:7px;letter-spacing:.04em;text-transform:uppercase}
 .wl-title em{font-style:normal;color:var(--pu);text-shadow:0 0 16px rgba(191,95,255,.4)}
-.wl-desc{font-size:.68rem;color:rgba(242,240,255,1);line-height:1.8;margin-bottom:20px;font-family:'IBM Plex Mono',monospace}
+.wl-desc{font-size:.68rem;color:rgba(242,240,255,.42);line-height:1.8;margin-bottom:20px;font-family:'IBM Plex Mono',monospace}
 .wl-fields{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
 .wl-input,.wl-select{width:100%;background:rgba(191,95,255,.03);border:1px solid rgba(191,95,255,.14);padding:11px 14px;color:var(--chalk);font-family:'IBM Plex Mono',monospace;font-size:.74rem;outline:none;transition:border-color .25s;border-radius:0}
-.wl-input::placeholder{color:rgba(242,240,255,1)}
+.wl-input::placeholder{color:rgba(242,240,255,.2)}
 .wl-input:focus,.wl-select:focus{border-color:var(--pu)}
 .wl-select{-webkit-appearance:none;appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23BF5FFF' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px}
 .wl-select option{background:var(--ink3)}
 .wl-submit{width:100%;background:var(--pu);color:var(--ink);border:none;padding:13px;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;cursor:pointer;box-shadow:0 0 20px rgba(191,95,255,.3);transition:all .25s;font-family:'IBM Plex Mono',monospace}
 .wl-submit:hover{background:var(--pu-lt);box-shadow:0 0 32px rgba(191,95,255,.5)}
-.wl-note{font-size:.54rem;color:rgba(242,240,255,1);text-align:center;margin-top:10px;line-height:1.6;font-family:'IBM Plex Mono',monospace}
+.wl-note{font-size:.54rem;color:rgba(242,240,255,.2);text-align:center;margin-top:10px;line-height:1.6;font-family:'IBM Plex Mono',monospace}
 .wl-close{position:absolute;top:14px;right:14px;width:26px;height:26px;border:1px solid rgba(242,240,255,.1);background:transparent;color:rgba(242,240,255,.36);font-size:.8rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s}
 .wl-close:hover{border-color:var(--pu);color:var(--pu)}
 
@@ -1397,8 +1391,9 @@ footer{
       <span class="bm-svc-tag" id="bmSvcTag">Book Appointment</span>
       <button class="bm-close" id="bmClose">&#x2715;</button>
     </div>
-    <div class="bm-body" id="bmBody" style="overflow-y:auto;-webkit-overflow-scrolling:touch;background:#000000;">
-      <div id="bmWidgetSlot" style="width:100%;"></div>
+    <div class="bm-body" style="overflow-y:auto;-webkit-overflow-scrolling:touch;background:#000000;">
+      <!-- <div id='frameTitle' class='embedded-widget-title' style='font-size: 23px; color: #333;font-family:Arial, Helvetica, sans-serif; line-height:24px; padding: 18px 10px 8px; text-align: center; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;'></div> -->
+      <div class="vagaro" style="width:250px; padding:0; border:0; margin:0 auto; text-align:center;"><style>.vagaro a {font-size:14px; color:#AAA; text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6puSdBuOc1WJD1wOc1WO61CxdfkJE1wgEJgoapOUc9CvdfQOapkvdfYOc9YRcG?v=DVXPREGuIeENtQJHmwQ9O7SN9zuEcIqF9kFoZ0igp1a#"></script></div>
     </div>
     <div class="bm-foot">
       <span>&#x2726;</span>
@@ -1623,7 +1618,7 @@ footer{
           </div>
         </div>
 
-        <button class="btn btn-pu" onclick="scrollToServices()" style="width:100%;justify-content:center;padding:14px 24px;font-size:.54rem">Book Your First Appointment &#8594;</button>
+        <button class="btn btn-pu" onclick="smoothScrollTo(document.getElementById('specials'), 900)" style="width:100%;justify-content:center;padding:14px 24px;font-size:.54rem">Book Your First Appointment &#8594;</button>
       </div>
 
     </div>
@@ -1700,33 +1695,24 @@ footer{
     <h2 class="wl-strip-h2">Can't Find<br>A <em>Spot?</em></h2>
     <p>We book up fast — but cancellations happen. Drop your info and we'll reach out the <strong>moment a slot opens up.</strong> No spam, ever.</p>
   </div>
-  <!-- RIGHT: how the waitlist works -->
+  <!-- RIGHT: inline form -->
   <div class="wl-strip-right">
-    <div class="wl-how-title">HOW IT WORKS</div>
-    <div class="wl-steps">
-      <div class="wl-step">
-        <span class="wl-step-num">01</span>
-        <div>
-          <strong>Book your service</strong>
-          <p>Go through checkout as normal. If your date is full, Vagaro will show you the next available slot — or let you join the waitlist directly.</p>
-        </div>
-      </div>
-      <div class="wl-step">
-        <span class="wl-step-num">02</span>
-        <div>
-          <strong>You get added automatically</strong>
-          <p>No extra form needed. Vagaro puts you in line the moment you click "Join Waitlist" inside the booking flow.</p>
-        </div>
-      </div>
-      <div class="wl-step">
-        <span class="wl-step-num">03</span>
-        <div>
-          <strong>We reach out instantly</strong>
-          <p>The second a cancellation opens up, Vagaro notifies you by email or text. First to respond gets the slot.</p>
-        </div>
-      </div>
+    <div style="width:46px;height:46px;background:rgba(191,95,255,.08);border:1px solid rgba(191,95,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:16px">&#x23F0;</div>
+    <div class="wl-strip-form">
+      <input class="wl-strip-input" type="text" id="wlBannerName" placeholder="Your name">
+      <input class="wl-strip-input" type="email" id="wlBannerEmail" placeholder="Email address">
+      <input class="wl-strip-input" type="tel" id="wlBannerPhone" placeholder="Phone (optional)">
+      <select class="wl-strip-input" id="wlBannerService" style="-webkit-appearance:none;appearance:none;cursor:pointer;background-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 fill=%27none%27%3E%3Cpath d=%27M1 1l5 5 5-5%27 stroke=%27%23BF5FFF%27 stroke-width=%271.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right 13px center;padding-right:36px;background-color:rgba(191,95,255,.05);">
+        <option value="" disabled selected>Which service are you interested in?</option>
+        <option>Frontal Wig Install — $170</option>
+        <option>Closure Install — $150</option>
+        <option>Wig Revamp — $190</option>
+        <option>Custom Styling</option>
+        <option>Any available</option>
+      </select>
     </div>
-    <button class="wl-strip-btn" onclick="openBooking('vagaroStore1','Frontal Wig Install')">&#x23F0;&nbsp; Join the Waitlist</button>
+    <button class="wl-strip-btn" id="wlTrigger">&#x23F0;&nbsp; Join the Waitlist</button>
+    <p class="wl-strip-note">We'll reach out the moment a spot opens. No spam, ever.</p>
   </div>
 </div>
 
@@ -2102,7 +2088,7 @@ document.getElementById('promoX').addEventListener('click',function(){
   // After transition ends, snap nav to top
   setTimeout(setNavTop, 420);
 });
-document.getElementById('promoCta').addEventListener('click',function(){ scrollToServices(); });
+document.getElementById('promoCta').addEventListener('click',function(){ smoothScrollTo(document.getElementById('specials'), 900); });
 
 /* ── WAITLIST ── */
 var wlOverlay=document.getElementById('wlOverlay');
@@ -2130,28 +2116,12 @@ document.getElementById('wlSubmit').addEventListener('click',function(){
 var bmOverlay = document.getElementById('bmOverlay');
 var bmSvcTag = document.getElementById('bmSvcTag');
 
-var bmSlot = document.getElementById('bmWidgetSlot');
-var activeStore = null;
-function openBooking(storeId, svcLabel){
-  var store = document.getElementById(storeId);
-  if(!store) return;
-  if(activeStore && activeStore !== store){
-    activeStore.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;';
-    document.body.appendChild(activeStore);
-  }
-  store.style.cssText = 'position:static;width:100%;';
-  bmSlot.appendChild(store);
-  activeStore = store;
-  bmSvcTag.textContent = svcLabel || 'Book Appointment';
+function openBooking(svc){
+  bmSvcTag.textContent = (svc && svc !== 'General') ? svc : 'Book Appointment';
   bmOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeBooking(){
-  if(activeStore){
-    activeStore.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;';
-    document.body.appendChild(activeStore);
-    activeStore = null;
-  }
   bmOverlay.classList.remove('open');
   document.body.style.overflow = '';
 }
@@ -2181,22 +2151,14 @@ scrollBtns.forEach(function(id){
   });
 });
 
-// Deal buttons
-var dealMap = { dealBtn1:'vagaroStore1', dealBtn2:'vagaroStore1', dealBtn3:'vagaroStore4' };
+// Deal buttons — open booking modal (specific offers)
+var dealMap = {
+  dealBtn1:'Frontal Wig Install', dealBtn2:'Frontal Wig Install', dealBtn3:'General'
+};
 Object.keys(dealMap).forEach(function(id){
-  var el=document.getElementById(id);
-  if(el) el.addEventListener('click',function(e){ e.stopPropagation(); openBooking(dealMap[id], id==='dealBtn3'?'Custom Styling':'Frontal Wig Install'); });
+  var el = document.getElementById(id);
+  if(el) el.addEventListener('click', function(e){ e.stopPropagation(); openBooking(dealMap[id]); });
 });
-
-// Service card buttons
-var s1=document.getElementById('svcBtn1'); if(s1) s1.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore1','Frontal Wig Install'); });
-var c1=document.getElementById('svcCard1'); if(c1) c1.addEventListener('click',function(e){ if(e.target.closest('#svcBtn1')) return; openBooking('vagaroStore1','Frontal Wig Install'); });
-var s2=document.getElementById('svcBtn2'); if(s2) s2.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore2','Closure Install'); });
-var c2=document.getElementById('svcCard2'); if(c2) c2.addEventListener('click',function(e){ if(e.target.closest('#svcBtn2')) return; openBooking('vagaroStore2','Closure Install'); });
-var s3=document.getElementById('svcBtn3'); if(s3) s3.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore3','Wig Revamp'); });
-var c3=document.getElementById('svcCard3'); if(c3) c3.addEventListener('click',function(e){ if(e.target.closest('#svcBtn3')) return; openBooking('vagaroStore3','Wig Revamp'); });
-var s4=document.getElementById('svcCtaBtn'); if(s4) s4.addEventListener('click',function(e){ e.stopPropagation(); openBooking('vagaroStore4','Custom Styling'); });
-var c4=document.getElementById('svcCard4'); if(c4) c4.addEventListener('click',function(e){ if(e.target.closest('#svcCtaBtn')) return; openBooking('vagaroStore4','Custom Styling'); });
 
 // Service cards still open booking modal
 var svcCardMap = {
@@ -2390,7 +2352,7 @@ document.getElementById('wlTrigger').addEventListener('click', function(){
   fetch('https://hooks.zapier.com/hooks/catch/26687679/u0pg4m2/',{method:'POST',body:new URLSearchParams({name:name,email:em,phone:phone,service:service,date:date})})
     .then(function(r){ console.log('Zapier waitlist banner:', r.status); }).catch(function(e){ console.warn(e); });
   // success state
-  document.querySelector('.wl-strip-right').innerHTML = '<div style="padding:20px 0"><div style="font-family:Bebas Neue,sans-serif;font-size:3rem;color:var(--pu);text-shadow:0 0 20px rgba(191,95,255,.5);line-height:1;margin-bottom:10px">&#10003; You\'re on the list!</div><p style="font-size:.72rem;color:rgba(242,240,255,1);line-height:1.85;font-family:IBM Plex Mono,monospace">We\'ll text or email <strong style="color:var(--pu-lt)">'+name+'</strong> the moment a spot opens up.</p></div>';
+  document.querySelector('.wl-strip-right').innerHTML = '<div style="padding:20px 0"><div style="font-family:Bebas Neue,sans-serif;font-size:3rem;color:var(--pu);text-shadow:0 0 20px rgba(191,95,255,.5);line-height:1;margin-bottom:10px">&#10003; You\'re on the list!</div><p style="font-size:.72rem;color:rgba(242,240,255,.65);line-height:1.85;font-family:IBM Plex Mono,monospace">We\'ll text or email <strong style="color:var(--pu-lt)">'+name+'</strong> the moment a spot opens up.</p></div>';
 });
 
 /* ── SERVICES CAROUSEL ── */
@@ -2536,21 +2498,6 @@ setTimeout(function(){
 },1500);
 </script>
 
-
-
-<!-- ═══ VAGARO EMBEDS — off-screen so iframes initialize on page load ═══ -->
-<div id="vagaroStore1" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
-  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9eS6O?v=1TGxCLPBNGb61yh0GkuVFSxIXKxtrZqyX4wzOk2nzieW#"></script></div>
-</div>
-<div id="vagaroStore2" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
-  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9eS6G?v=gQRqJyUygK1aOuO7SL8Imyz1s3yEh9xaoPR35KeHaYz0#"></script></div>
-</div>
-<div id="vagaroStore3" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
-  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9eS60?v=9RRHW7yxzCxRxvtJZBKegxoFfOFb7Q2yPdEjZglPU4OW#"></script></div>
-</div>
-<div id="vagaroStore4" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
-  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9cQd0?v=2REi3ErRhDyKsQvbCgxSlxGTRQQL1nTxklBqrXMwwwm#"></script></div>
-</div>
 
 </body>
 </html>
