@@ -1180,7 +1180,7 @@ footer{
 .nc-step:first-child{border-top:1px solid rgba(191,95,255,.12)}
 .nc-step-num{
   font-family:'Bebas Neue',sans-serif;
-  font-size:2rem;color:rgba(191, 95, 255, 0.382);
+  font-size:2rem;color:rgba(191,95,255,.2);
   letter-spacing:.06em;line-height:1;
   padding-top:2px;
   transition:color .25s;
@@ -1768,7 +1768,7 @@ footer{
       <div class="deal-item-body">
         <div class="deal-item-tag">&#x2726; Refer a Friend</div>
         <div class="deal-item-title">Referral Discount</div>
-        <p class="deal-item-desc">Refer a friend who books and you both get $20 off your next appointment. Unlimited referrals!</p>
+        <p class="deal-item-desc">When you book, mention the friend you referred in the notes field. When your friend books, they'll need to mention your name too. Once both appointments are confirmed, we'll apply $20 off for each of you — no code needed, just drop the name and we handle the rest.</p>
       </div>
       <div class="deal-item-right">
         <div class="deal-price-row"><span class="deal-new">$20 Off</span></div>
@@ -2166,7 +2166,7 @@ function scrollToServices(){
 }
 
 // Buttons that scroll to #services (not the modal)
-var scrollBtns = ['navBook','mobBookBtn','heroBook','ctaBook','polBook'];
+var scrollBtns = ['navBook','mobBookBtn','heroBook','ctaBook','polBook','dealBtn3'];
 scrollBtns.forEach(function(id){
   var el = document.getElementById(id);
   if(!el) return;
@@ -2182,10 +2182,10 @@ scrollBtns.forEach(function(id){
 });
 
 // Deal buttons
-var dealMap = { dealBtn1:'vagaroStore1', dealBtn2:'vagaroStore1', dealBtn3:'vagaroStore4' };
+var dealMap = { dealBtn1:'vagaroStore6', dealBtn2:'vagaroStore5' };
 Object.keys(dealMap).forEach(function(id){
   var el=document.getElementById(id);
-  if(el) el.addEventListener('click',function(e){ e.stopPropagation(); openBooking(dealMap[id], id==='dealBtn3'?'Custom Styling':'Frontal Wig Install'); });
+  if(el) el.addEventListener('click',function(e){ e.stopPropagation(); openBooking(dealMap[id], id==='dealBtn2'?'Install + Revamp Bundle':'First Install Discount'); });
 });
 
 // Service card buttons
@@ -2550,6 +2550,13 @@ setTimeout(function(){
 </div>
 <div id="vagaroStore4" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
   <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9cQd0?v=2REi3ErRhDyKsQvbCgxSlxGTRQQL1nTxklBqrXMwwwm#"></script></div>
+</div>
+
+<div id="vagaroStore5" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
+  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9gOcm?v=ab8Ekch8WyBsv5AOTwAt5nsyMlzqZzkqc71wJYjSPz5e#"></script></div>
+</div>
+<div id="vagaroStore6" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
+  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9gOd8?v=oZHTfQAvpNmSZvBi1rUoeU0xciHA3NEArLeKhliBBTu#"></script></div>
 </div>
 
 </body>
