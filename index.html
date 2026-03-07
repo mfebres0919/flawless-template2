@@ -136,7 +136,7 @@ nav{
 nav.solid{background:rgba(6,6,10,.99)}
 .nav-left{display:none;list-style:none;gap:clamp(20px,3vw,44px);align-items:center;justify-content:flex-end}
 .nav-right{display:none;list-style:none;gap:clamp(20px,3vw,44px);align-items:center;justify-content:flex-start}
-.nav-left a,.nav-right a{font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(242,240,255,.44);transition:color .25s;font-family:'IBM Plex Mono',monospace;position:relative}
+.nav-left a,.nav-right a{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:rgb(255, 254, 255);transition:color .25s;font-family:'IBM Plex Mono',monospace;position:relative}
 .nav-left a::after,.nav-right a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--pu);transform:scaleX(0);transition:transform .3s;transform-origin:right;box-shadow:0 0 6px rgba(191,95,255,.7)}
 .nav-left a:hover,.nav-right a:hover{color:var(--pu-lt)}
 .nav-left a:hover::after,.nav-right a:hover::after{transform:scaleX(1);transform-origin:left}
@@ -1294,7 +1294,7 @@ footer{
 .bm-loader.gone{display:none}
 .bm-spinner{width:32px;height:32px;border:2px solid rgba(191,95,255,.15);border-top-color:var(--pu);border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.bm-body iframe{width:100% !important;height: 800px;px !important;min-height:800px !important;border:none !important;display:block !important}
+.bm-body iframe{width:100% !important;height:950px !important;min-height:950px !important;border:none !important;display:block !important}
 .bm-body>div{height:auto !important}
 .bm-body .vagaro{width:100% !important;height:auto !important}
 .bm-foot{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 18px;border-top:1px solid rgba(191,95,255,.08);flex-shrink:0}
@@ -1478,6 +1478,70 @@ footer{
   </div>
 </div>
 
+
+<!-- ═══ SERVICES — HORIZONTAL SCROLL ═══ -->
+<section class="services" id="services">
+  <div class="svc-header">
+    <div class="svc-header-left">
+      <div class="eyebrow">Our Services</div>
+      <h2 class="svc-h2">What We<br><em>Offer</em></h2>
+    </div>
+    <p class="svc-header-right">Each service is tailored to your hair type, lifestyle, and the look you're going for. No cookie-cutter installs here.</p>
+  </div>
+  <div class="svc-scroll-wrap" id="svcScrollWrap">
+    <div class="svc-track">
+      <div class="svc-card" id="svcCard1">
+        <img src="img6.jpeg" alt="Frontal Wig Install">
+        <div class="svc-veil"></div>
+        <div class="svc-body">
+          <div class="svc-num">01 / Service</div>
+          <div class="svc-title">Frontal Wig Install</div>
+          <div class="svc-price">Starting at $170</div>
+          <button class="svc-book-btn" id="svcBtn1">Book This</button>
+        </div>
+      </div>
+      <div class="svc-card" id="svcCard2">
+        <img src="img12.png" alt="Closure Install">
+        <div class="svc-veil"></div>
+        <div class="svc-body">
+          <div class="svc-num">02 / Service</div>
+          <div class="svc-title">Closure Install</div>
+          <div class="svc-price">Starting at $150</div>
+          <button class="svc-book-btn" id="svcBtn2">Book This</button>
+        </div>
+      </div>
+      <div class="svc-card" id="svcCard3">
+        <img src="img1.jpeg" alt="Wig Revamp">
+        <div class="svc-veil"></div>
+        <div class="svc-body">
+          <div class="svc-num">03 / Service</div>
+          <div class="svc-title">Wig Revamp</div>
+          <div class="svc-price">Starting at $190</div>
+          <button class="svc-book-btn" id="svcBtn3">Book This</button>
+        </div>
+      </div>
+      <div class="svc-card" id="svcCard4">
+        <img src="img10.jpeg" alt="Custom Styling">
+        <div class="svc-veil"></div>
+        <div class="svc-body">
+          <div class="svc-num">04 / Service</div>
+          <div class="svc-title">Custom Styling</div>
+          <div class="svc-price">Price varies</div>
+          <button class="svc-book-btn" id="svcCtaBtn">Book This</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="svc-drag-hint">Drag to explore all services</div>
+  <!-- Mobile / tablet arrow nav -->
+  <div class="svc-nav">
+    <button class="svc-arr" id="svcPrev" aria-label="Previous service">&#8592;</button>
+    <button class="svc-arr" id="svcNext" aria-label="Next service">&#8594;</button>
+    <div class="svc-nav-dots" id="svcDots"></div>
+  </div>
+</section>
+
+
 <!-- ═══ ABOUT ME ═══ -->
 <section class="about" id="about">
   <div class="about-inner">
@@ -1621,68 +1685,6 @@ footer{
       </div>
 
     </div>
-  </div>
-</section>
-
-<!-- ═══ SERVICES — HORIZONTAL SCROLL ═══ -->
-<section class="services" id="services">
-  <div class="svc-header">
-    <div class="svc-header-left">
-      <div class="eyebrow">Our Services</div>
-      <h2 class="svc-h2">What We<br><em>Offer</em></h2>
-    </div>
-    <p class="svc-header-right">Each service is tailored to your hair type, lifestyle, and the look you're going for. No cookie-cutter installs here.</p>
-  </div>
-  <div class="svc-scroll-wrap" id="svcScrollWrap">
-    <div class="svc-track">
-      <div class="svc-card" id="svcCard1">
-        <img src="img6.jpeg" alt="Frontal Wig Install">
-        <div class="svc-veil"></div>
-        <div class="svc-body">
-          <div class="svc-num">01 / Service</div>
-          <div class="svc-title">Frontal Wig Install</div>
-          <div class="svc-price">Starting at $170</div>
-          <button class="svc-book-btn" id="svcBtn1">Book This</button>
-        </div>
-      </div>
-      <div class="svc-card" id="svcCard2">
-        <img src="img7.jpeg" alt="Closure Install">
-        <div class="svc-veil"></div>
-        <div class="svc-body">
-          <div class="svc-num">02 / Service</div>
-          <div class="svc-title">Closure Install</div>
-          <div class="svc-price">Starting at $150</div>
-          <button class="svc-book-btn" id="svcBtn2">Book This</button>
-        </div>
-      </div>
-      <div class="svc-card" id="svcCard3">
-        <img src="img1.jpeg" alt="Wig Revamp">
-        <div class="svc-veil"></div>
-        <div class="svc-body">
-          <div class="svc-num">03 / Service</div>
-          <div class="svc-title">Wig Revamp</div>
-          <div class="svc-price">Starting at $190</div>
-          <button class="svc-book-btn" id="svcBtn3">Book This</button>
-        </div>
-      </div>
-      <div class="svc-card" id="svcCard4">
-        <img src="img10.jpeg" alt="Custom Styling">
-        <div class="svc-veil"></div>
-        <div class="svc-body">
-          <div class="svc-num">04 / Service</div>
-          <div class="svc-title">Custom Styling</div>
-          <div class="svc-price">Price varies</div>
-          <button class="svc-book-btn" id="svcCtaBtn">Book This</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="svc-drag-hint">Drag to explore all services</div>
-  <!-- Mobile / tablet arrow nav -->
-  <div class="svc-nav">
-    <button class="svc-arr" id="svcPrev" aria-label="Previous service">&#8592;</button>
-    <button class="svc-arr" id="svcNext" aria-label="Next service">&#8594;</button>
-    <div class="svc-nav-dots" id="svcDots"></div>
   </div>
 </section>
 
@@ -2525,13 +2527,13 @@ setTimeout(function(){
 
 <!-- ═══ VAGARO EMBEDS — off-screen so iframes initialize on page load ═══ -->
 <div id="vagaroStore1" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
-  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9cQd0?v=2REi3ErRhDyKsQvbCgxSlxGTRQQL1nTxklBqrXMwwwm#"></script></div>
+  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9eS6O?v=1TGxCLPBNGb61yh0GkuVFSxIXKxtrZqyX4wzOk2nzieW#"></script></div>
 </div>
 <div id="vagaroStore2" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
-  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9cQd0?v=2REi3ErRhDyKsQvbCgxSlxGTRQQL1nTxklBqrXMwwwm#"></script></div>
+  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9eS6G?v=gQRqJyUygK1aOuO7SL8Imyz1s3yEh9xaoPR35KeHaYz0#"></script></div>
 </div>
 <div id="vagaroStore3" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
-  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9cQd0?v=2REi3ErRhDyKsQvbCgxSlxGTRQQL1nTxklBqrXMwwwm#"></script></div>
+  <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9eS60?v=9RRHW7yxzCxRxvtJZBKegxoFfOFb7Q2yPdEjZglPU4OW#"></script></div>
 </div>
 <div id="vagaroStore4" style="position:fixed;top:-9999px;left:-9999px;width:600px;z-index:-1;">
   <div class="vagaro" style="width:100%;padding:0;border:0;margin:0 auto;text-align:center;"><style>.vagaro a{font-size:14px;color:#AAA;text-decoration:none;}</style><a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>&nbsp;<a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,&nbsp;<a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>&nbsp;&amp;&nbsp;<a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a><script type="text/javascript" src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqCZOrC3WcT3qmV35y6RuRFXoSlXYO61Cq7fYO61WO4pkUcvCu7gCmjZcoapOUc9CvdfQOapkvdfYOc9cQd0?v=2REi3ErRhDyKsQvbCgxSlxGTRQQL1nTxklBqrXMwwwm#"></script></div>
