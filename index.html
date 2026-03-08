@@ -152,6 +152,8 @@ nav.solid{background:rgba(6,6,10,.99)}
 .mob-menu{
   position:fixed;inset:0;z-index:199;background:var(--ink);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:80px 24px 40px;
   transform:translateX(100%);transition:transform .45s cubic-bezier(.4,0,.2,1);
 }
 .mob-menu.open{transform:translateX(0)}
