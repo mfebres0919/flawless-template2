@@ -2382,7 +2382,8 @@ document.addEventListener('keydown', function(e){
 
 
 /* ── WAITLIST BANNER INLINE SUBMIT ── */
-document.getElementById('wlTrigger').addEventListener('click', function(){
+var wlTriggerEl = document.getElementById('wlTrigger');
+if(wlTriggerEl) wlTriggerEl.addEventListener('click', function(){
   var name = document.getElementById('wlBannerName').value.trim();
   var em = document.getElementById('wlBannerEmail').value.trim();
   var phone = document.getElementById('wlBannerPhone').value.trim();
